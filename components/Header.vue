@@ -22,7 +22,7 @@
 
         <div class="flex items-center space-x-4">
           <!-- Language Switcher -->
-          <div class="relative">
+          <div ref="langMenuRef" class="relative">
             <button 
               @click="langMenuOpen = !langMenuOpen"
               class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center gap-1"
@@ -103,12 +103,13 @@ const navigation = [
 ]
 
 const availableLocales = computed(() => {
-  return locales.value.filter((i) => i.code !== locale.value)
+  return locales.value.filter((loc) => loc.code !== locale.value)
 })
 
 const mobileMenuOpen = ref(false)
 const langMenuOpen = ref(false)
 const isDark = ref(false)
+const langMenuRef = ref(null)
 
 // Close language menu when clicking outside
 onMounted(() => {
@@ -124,7 +125,7 @@ onMounted(() => {
 
   // Close language menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.relative')) {
+    if (langMenuRef.value && !langMenuRef.value.contains(e.target)) {
       langMenuOpen.value = false
     }
   })
