@@ -8,8 +8,6 @@
   },
   "hero": {
     "greeting": "Hi, I'm",
-    "name": "First Last",
-    "title": "Full-Stack Developer",
     "description": "I design and build modern web applications, focusing on code quality, best practices, and user experience.",
     "viewProjects": "View my projects",
     "aboutMe": "Learn more"

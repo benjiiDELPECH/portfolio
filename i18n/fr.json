@@ -8,8 +8,6 @@
   },
   "hero": {
     "greeting": "Bonjour, je suis",
-    "name": "Prénom Nom",
-    "title": "Développeur Full-Stack",
     "description": "Je conçois et développe des applications web modernes, en mettant l'accent sur la qualité du code, les bonnes pratiques et l'expérience utilisateur.",
     "viewProjects": "Voir mes projets",
     "aboutMe": "En savoir plus"

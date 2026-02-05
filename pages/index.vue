@@ -9,13 +9,13 @@
               {{ $t('hero.greeting') }}
             </p>
             <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-              {{ $t('hero.name') }}
+              {{ basics.name }}
             </h1>
             <h2 class="text-2xl lg:text-3xl font-semibold text-gray-600 dark:text-gray-300 mb-6">
-              {{ $t('hero.title') }}
+              {{ basics.headline }}
             </h2>
             <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl">
-              {{ $t('hero.description') }}
+              {{ basics.summary?.[0] || $t('hero.description') }}
             </p>
             <div class="flex flex-wrap gap-4">
               <NuxtLink 
@@ -55,6 +55,7 @@
         </div>
         
         <div class="grid md:grid-cols-3 gap-8">
+          <!-- Backend/Development Skills -->
           <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-lg flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,51 +63,65 @@
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {{ $t('skills.development.title') }}
+              {{ skills[0]?.name || $t('skills.development.title') }}
             </h3>
             <p class="text-gray-600 dark:text-gray-400 mb-4">
               {{ $t('skills.development.description') }}
             </p>
             <div class="flex flex-wrap gap-2">
-              <span v-for="skill in developmentSkills" :key="skill" class="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+              <span 
+                v-for="skill in skills[0]?.keywords || []" 
+                :key="skill" 
+                class="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full"
+              >
                 {{ skill }}
               </span>
             </div>
           </div>
 
+          <!-- Frontend Skills -->
           <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div class="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-lg flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {{ $t('skills.infrastructure.title') }}
+              {{ skills[1]?.name || $t('skills.infrastructure.title') }}
             </h3>
             <p class="text-gray-600 dark:text-gray-400 mb-4">
               {{ $t('skills.infrastructure.description') }}
             </p>
             <div class="flex flex-wrap gap-2">
-              <span v-for="skill in infrastructureSkills" :key="skill" class="px-3 py-1 text-sm bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full">
+              <span 
+                v-for="skill in skills[1]?.keywords || []" 
+                :key="skill" 
+                class="px-3 py-1 text-sm bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full"
+              >
                 {{ skill }}
               </span>
             </div>
           </div>
 
+          <!-- DevOps/Infrastructure Skills -->
           <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {{ $t('skills.other.title') }}
+              {{ skills[2]?.name || $t('skills.other.title') }}
             </h3>
             <p class="text-gray-600 dark:text-gray-400 mb-4">
               {{ $t('skills.other.description') }}
             </p>
             <div class="flex flex-wrap gap-2">
-              <span v-for="skill in otherSkills" :key="skill" class="px-3 py-1 text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full">
+              <span 
+                v-for="skill in skills[2]?.keywords || []" 
+                :key="skill" 
+                class="px-3 py-1 text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full"
+              >
                 {{ skill }}
               </span>
             </div>
@@ -135,9 +150,9 @@
           </NuxtLink>
         </div>
         
-        <div v-if="projects && projects.length > 0" class="grid md:grid-cols-2 gap-6">
+        <div v-if="contentProjects && contentProjects.length > 0" class="grid md:grid-cols-2 gap-6">
           <NuxtLink 
-            v-for="project in projects" 
+            v-for="project in contentProjects" 
             :key="project._path"
             :to="project._path"
             class="group block p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-700 transition-all"
@@ -253,13 +268,14 @@
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a 
-            href="mailto:contact@example.com" 
+            :href="'mailto:' + basics.email" 
             class="px-6 py-3 bg-white text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-colors"
           >
             {{ $t('contact.email') }}
           </a>
           <a 
-            href="https://linkedin.com" 
+            v-if="getProfile('linkedin')"
+            :href="getProfile('linkedin')?.url" 
             target="_blank"
             rel="noopener noreferrer"
             class="px-6 py-3 bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-lg font-medium transition-colors"
@@ -274,21 +290,17 @@
 
 <script setup>
 const { t, locale } = useI18n()
-
-// Placeholder skills - will be replaced with CV data
-const developmentSkills = ref(['JavaScript', 'TypeScript', 'Vue.js', 'Node.js'])
-const infrastructureSkills = ref(['Docker', 'AWS', 'CI/CD', 'Linux'])
-const otherSkills = ref(['Git', 'Agile', 'REST API', 'SQL'])
+const { basics, skills, getProfile } = useResume()
 
 useSeoMeta({
-  title: t('hero.name'),
-  description: t('hero.description'),
-  ogTitle: t('hero.name'),
-  ogDescription: t('hero.description'),
+  title: basics.value.name,
+  description: basics.value.summary?.[0] || t('hero.description'),
+  ogTitle: basics.value.name,
+  ogDescription: basics.value.summary?.[0] || t('hero.description'),
   ogType: 'website'
 })
 
-const { data: projects } = await useAsyncData('home-projects', async () => {
+const { data: contentProjects } = await useAsyncData('home-projects', async () => {
   try {
     return await queryContent('/projects')
       .sort({ date: -1 })
@@ -312,7 +324,7 @@ const { data: articles } = await useAsyncData('home-articles', async () => {
   }
 })
 
-const formatDate = (date) => {
+const formatDate = (date: string) => {
   if (!date) return ''
   return new Date(date).toLocaleDateString(locale.value === 'fr' ? 'fr-FR' : 'en-US', {
     year: 'numeric',

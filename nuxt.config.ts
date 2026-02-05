@@ -5,6 +5,11 @@ export default defineNuxtConfig({
 
   modules: ['@nuxt/content', '@nuxtjs/tailwindcss', '@nuxtjs/i18n'],
 
+  // Enable raw imports for YAML files
+  vite: {
+    assetsInclude: ['**/*.yml', '**/*.yaml']
+  },
+
   i18n: {
     locales: [
       {

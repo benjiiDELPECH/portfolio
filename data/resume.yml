@@ -1,0 +1,167 @@
+# YAMLResume - https://yamlresume.dev
+# Fichier source unique pour le portfolio et la génération de CV PDF
+# Commande pour générer le PDF : npx yamlresume build data/resume.yml
+---
+content:
+  basics:
+    name: "Prénom Nom"
+    headline: "Développeur Full-Stack"
+    phone: "+33 6 XX XX XX XX"
+    email: "contact@example.com"
+    url: "https://example.com"
+    summary:
+      - Développeur passionné avec une expertise en développement web full-stack
+      - Expérience dans la conception et le développement d'applications web modernes
+      - Focus sur la qualité du code, les bonnes pratiques et l'expérience utilisateur
+    location:
+      city: "Paris"
+      region: "Île-de-France"
+      country: "France"
+    profiles:
+      - network: GitHub
+        url: "https://github.com/username"
+        username: "username"
+      - network: LinkedIn
+        url: "https://linkedin.com/in/username"
+        username: "username"
+
+  work:
+    - name: "Entreprise actuelle"
+      url: "https://example.com"
+      position: "Développeur Full-Stack"
+      startDate: "Jan 2023"
+      endDate: ""
+      summary:
+        - Développement et maintenance d'applications web modernes
+        - Collaboration avec les équipes produit et design
+        - Mise en place de bonnes pratiques de développement
+      keywords:
+        - TypeScript
+        - Vue.js
+        - Node.js
+
+    - name: "Entreprise précédente"
+      url: "https://example.com"
+      position: "Développeur Backend"
+      startDate: "Sep 2020"
+      endDate: "Dec 2022"
+      summary:
+        - Conception et développement d'APIs RESTful
+        - Optimisation des performances et de la scalabilité
+        - Participation aux revues de code et mentorat
+      keywords:
+        - Java
+        - Spring Boot
+        - PostgreSQL
+
+  education:
+    - institution: "École / Université"
+      url: "https://example.com"
+      degree: "Master"
+      area: "Informatique"
+      startDate: "Sep 2018"
+      endDate: "Jul 2020"
+      summary:
+        - Spécialisation en développement logiciel
+        - Projets pratiques en équipe
+
+    - institution: "École / Université"
+      url: "https://example.com"
+      degree: "Bachelor"
+      area: "Informatique"
+      startDate: "Sep 2015"
+      endDate: "Jul 2018"
+      summary:
+        - Formation généraliste en informatique
+
+  skills:
+    - name: "Développement Backend"
+      level: "Expert"
+      keywords:
+        - Java
+        - Kotlin
+        - Node.js
+        - Spring Boot
+        - PostgreSQL
+
+    - name: "Développement Frontend"
+      level: "Advanced"
+      keywords:
+        - TypeScript
+        - Vue.js
+        - Nuxt
+        - React
+        - Tailwind CSS
+
+    - name: "DevOps & Infrastructure"
+      level: "Intermediate"
+      keywords:
+        - Docker
+        - Kubernetes
+        - AWS
+        - CI/CD
+        - Linux
+
+    - name: "Outils & Méthodologies"
+      level: "Advanced"
+      keywords:
+        - Git
+        - Agile/Scrum
+        - REST API
+        - Tests automatisés
+
+  languages:
+    - language: "Français"
+      fluency: "Native or Bilingual Proficiency"
+      keywords: []
+    - language: "Anglais"
+      fluency: "Full Professional Proficiency"
+      keywords:
+        - "TOEIC 900+"
+
+  projects:
+    - name: "Projet exemple"
+      url: "https://github.com/username/project"
+      description: "Description courte du projet"
+      startDate: "Jan 2024"
+      endDate: "Mar 2024"
+      summary:
+        - Développement d'une application web complète
+        - Utilisation de technologies modernes
+      keywords:
+        - Vue.js
+        - Node.js
+        - MongoDB
+
+  interests:
+    - name: "Technologies"
+      keywords:
+        - Open Source
+        - IA/ML
+        - Web3
+    - name: "Hobbies"
+      keywords:
+        - Sport
+        - Musique
+        - Voyages
+
+locale:
+  language: fr
+
+layouts:
+  - engine: latex
+    page:
+      margins:
+        top: 2.5cm
+        left: 1.5cm
+        right: 1.5cm
+        bottom: 2.5cm
+      showPageNumbers: true
+    template: moderncv-banking
+    typography:
+      fontSize: 11pt
+  - engine: markdown
+  - engine: html
+    template: calm
+    typography:
+      fontSize: 16px

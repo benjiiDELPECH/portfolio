@@ -22,9 +22,11 @@
             {{ $t('about.intro.title') }}
           </h2>
           <div class="prose prose-lg dark:prose-invert">
-            <p class="text-gray-600 dark:text-gray-300">
-              {{ $t('about.intro.content') }}
-            </p>
+            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+              <li v-for="(item, index) in basics.summary" :key="index">
+                {{ item }}
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -38,26 +40,29 @@
           </h2>
           
           <div class="space-y-6">
-            <div v-for="(job, index) in experience" :key="index" class="relative pl-8 pb-6 border-l-2 border-blue-200 dark:border-blue-800 last:pb-0">
+            <div v-for="(job, index) in work" :key="index" class="relative pl-8 pb-6 border-l-2 border-blue-200 dark:border-blue-800 last:pb-0">
               <div class="absolute -left-2 top-0 w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
               <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-5">
                 <div class="flex flex-wrap items-center justify-between mb-2">
                   <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    {{ job.title }}
+                    {{ job.position }}
                   </h3>
                   <span class="text-sm text-blue-600 dark:text-blue-400 font-medium">
-                    {{ job.period }}
+                    {{ formatDateRange(job.startDate, job.endDate) }}
                   </span>
                 </div>
                 <p class="text-gray-700 dark:text-gray-300 font-medium mb-2">
-                  {{ job.company }}
+                  <a v-if="job.url" :href="job.url" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400">
+                    {{ job.name }}
+                  </a>
+                  <span v-else>{{ job.name }}</span>
                 </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">
-                  {{ job.description }}
-                </p>
-                <div v-if="job.technologies" class="mt-3 flex flex-wrap gap-2">
+                <ul class="text-gray-600 dark:text-gray-400 text-sm space-y-1 mb-3">
+                  <li v-for="(item, i) in job.summary" :key="i">• {{ item }}</li>
+                </ul>
+                <div v-if="job.keywords" class="flex flex-wrap gap-2">
                   <span 
-                    v-for="tech in job.technologies" 
+                    v-for="tech in job.keywords" 
                     :key="tech"
                     class="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded"
                   >
@@ -84,18 +89,21 @@
             <div v-for="(edu, index) in education" :key="index" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-5">
               <div class="flex flex-wrap items-center justify-between mb-2">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                  {{ edu.degree }}
+                  {{ edu.degree }} - {{ edu.area }}
                 </h3>
                 <span class="text-sm text-blue-600 dark:text-blue-400 font-medium">
-                  {{ edu.year }}
+                  {{ formatDateRange(edu.startDate, edu.endDate) }}
                 </span>
               </div>
               <p class="text-gray-700 dark:text-gray-300">
-                {{ edu.school }}
+                <a v-if="edu.url" :href="edu.url" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400">
+                  {{ edu.institution }}
+                </a>
+                <span v-else>{{ edu.institution }}</span>
               </p>
-              <p v-if="edu.description" class="text-gray-600 dark:text-gray-400 text-sm mt-2">
-                {{ edu.description }}
-              </p>
+              <ul v-if="edu.summary" class="text-gray-600 dark:text-gray-400 text-sm mt-2 space-y-1">
+                <li v-for="(item, i) in edu.summary" :key="i">• {{ item }}</li>
+              </ul>
             </div>
           </div>
         </section>
@@ -109,14 +117,18 @@
             <span class="text-5xl">👨‍💻</span>
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
-            {{ $t('hero.name') }}
+            {{ basics.name }}
           </h3>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">
-            {{ $t('hero.title') }}
+          <p class="text-gray-600 dark:text-gray-400 mb-2">
+            {{ basics.headline }}
+          </p>
+          <p v-if="basics.location" class="text-sm text-gray-500 dark:text-gray-500 mb-4">
+            📍 {{ basics.location.city }}, {{ basics.location.country }}
           </p>
           <div class="flex justify-center gap-3">
             <a 
-              href="https://github.com" 
+              v-if="getProfile('github')"
+              :href="getProfile('github')?.url" 
               target="_blank" 
               rel="noopener noreferrer"
               class="p-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
@@ -127,7 +139,8 @@
               </svg>
             </a>
             <a 
-              href="https://linkedin.com" 
+              v-if="getProfile('linkedin')"
+              :href="getProfile('linkedin')?.url" 
               target="_blank" 
               rel="noopener noreferrer"
               class="p-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
@@ -138,7 +151,7 @@
               </svg>
             </a>
             <a 
-              href="mailto:contact@example.com"
+              :href="'mailto:' + basics.email"
               class="p-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
               aria-label="Email"
             >
@@ -155,16 +168,19 @@
             {{ $t('about.skills.title') }}
           </h3>
           <div class="space-y-4">
-            <div v-for="skill in skillCategories" :key="skill.name">
+            <div v-for="skill in skills" :key="skill.name">
               <div class="flex justify-between text-sm mb-1">
                 <span class="text-gray-700 dark:text-gray-300">{{ skill.name }}</span>
-                <span class="text-gray-500 dark:text-gray-400">{{ skill.level }}%</span>
+                <span class="text-gray-500 dark:text-gray-400">{{ skill.level }}</span>
               </div>
-              <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                <div 
-                  class="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all duration-500"
-                  :style="{ width: skill.level + '%' }"
-                ></div>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span 
+                  v-for="keyword in skill.keywords.slice(0, 5)" 
+                  :key="keyword"
+                  class="px-2 py-0.5 text-xs bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded"
+                >
+                  {{ keyword }}
+                </span>
               </div>
             </div>
           </div>
@@ -176,10 +192,10 @@
             {{ $t('about.languages.title') }}
           </h3>
           <div class="space-y-3">
-            <div v-for="lang in languages" :key="lang.name" class="flex items-center justify-between">
-              <span class="text-gray-700 dark:text-gray-300">{{ lang.name }}</span>
+            <div v-for="lang in languages" :key="lang.language" class="flex items-center justify-between">
+              <span class="text-gray-700 dark:text-gray-300">{{ lang.language }}</span>
               <span class="text-sm text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">
-                {{ lang.level }}
+                {{ formatFluency(lang.fluency) }}
               </span>
             </div>
           </div>
@@ -187,7 +203,8 @@
 
         <!-- Download CV -->
         <a 
-          href="#" 
+          href="/resume.pdf" 
+          target="_blank"
           class="flex items-center justify-center gap-2 w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -201,51 +218,25 @@
 </template>
 
 <script setup>
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const { basics, work, education, skills, languages, getProfile, formatDateRange } = useResume()
 
 useSeoMeta({
   title: t('about.title'),
-  description: t('about.subtitle'),
+  description: basics.value.summary?.[0] || t('about.subtitle'),
   ogTitle: t('about.title'),
-  ogDescription: t('about.subtitle')
+  ogDescription: basics.value.summary?.[0] || t('about.subtitle')
 })
 
-// Placeholder data - will be replaced with CV data
-const experience = ref([
-  {
-    title: 'Poste à définir',
-    company: 'Entreprise',
-    period: '2023 - Présent',
-    description: 'Description du poste et des responsabilités principales.',
-    technologies: ['Tech1', 'Tech2', 'Tech3']
-  },
-  {
-    title: 'Poste précédent',
-    company: 'Autre entreprise',
-    period: '2020 - 2023',
-    description: 'Description du poste et des responsabilités principales.',
-    technologies: ['Tech1', 'Tech2']
+// Simplify fluency labels
+const formatFluency = (fluency: string) => {
+  const map: Record<string, string> = {
+    'Native or Bilingual Proficiency': locale.value === 'fr' ? 'Natif' : 'Native',
+    'Full Professional Proficiency': locale.value === 'fr' ? 'Courant' : 'Fluent',
+    'Minimum Professional Proficiency': locale.value === 'fr' ? 'Professionnel' : 'Professional',
+    'Limited Working Proficiency': locale.value === 'fr' ? 'Intermédiaire' : 'Intermediate',
+    'Elementary Proficiency': locale.value === 'fr' ? 'Élémentaire' : 'Elementary'
   }
-])
-
-const education = ref([
-  {
-    degree: 'Diplôme à définir',
-    school: 'École / Université',
-    year: '2020',
-    description: 'Spécialisation ou mention'
-  }
-])
-
-const skillCategories = ref([
-  { name: 'Backend', level: 90 },
-  { name: 'Frontend', level: 80 },
-  { name: 'DevOps', level: 75 },
-  { name: 'Architecture', level: 85 }
-])
-
-const languages = ref([
-  { name: 'Français', level: 'Natif' },
-  { name: 'Anglais', level: 'Courant' }
-])
+  return map[fluency] || fluency
+}
 </script>

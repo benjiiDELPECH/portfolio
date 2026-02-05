@@ -5,10 +5,10 @@
         <!-- Brand -->
         <div>
           <NuxtLink to="/" class="text-xl font-bold text-gray-900 dark:text-white">
-            {{ $t('hero.name') }}
+            {{ basics.name }}
           </NuxtLink>
           <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-            {{ $t('hero.title') }}
+            {{ basics.headline }}
           </p>
         </div>
 
@@ -36,7 +36,8 @@
           </h3>
           <div class="flex space-x-4">
             <a 
-              :href="socialLinks.github" 
+              v-if="getProfile('github')"
+              :href="getProfile('github')?.url" 
               target="_blank" 
               rel="noopener noreferrer" 
               class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
@@ -47,7 +48,8 @@
               </svg>
             </a>
             <a 
-              :href="socialLinks.linkedin" 
+              v-if="getProfile('linkedin')"
+              :href="getProfile('linkedin')?.url" 
               target="_blank" 
               rel="noopener noreferrer" 
               class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -58,7 +60,7 @@
               </svg>
             </a>
             <a 
-              :href="'mailto:' + socialLinks.email"
+              :href="'mailto:' + basics.email"
               class="text-gray-600 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors"
               aria-label="Email"
             >
@@ -73,7 +75,7 @@
       <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
         <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p class="text-gray-500 dark:text-gray-400 text-sm">
-            © {{ currentYear }} {{ $t('hero.name') }}. {{ $t('footer.rights') }}
+            © {{ currentYear }} {{ basics.name }}. {{ $t('footer.rights') }}
           </p>
           <p class="text-gray-400 dark:text-gray-500 text-sm">
             {{ $t('footer.builtWith') }}
@@ -85,6 +87,7 @@
 </template>
 
 <script setup>
+const { basics, getProfile } = useResume()
 const currentYear = new Date().getFullYear()
 
 const navigation = [
@@ -94,11 +97,4 @@ const navigation = [
   { name: 'nav.lab', path: '/lab' },
   { name: 'nav.about', path: '/about' }
 ]
-
-// Placeholder links - will be replaced with actual links
-const socialLinks = {
-  github: 'https://github.com',
-  linkedin: 'https://linkedin.com',
-  email: 'contact@example.com'
-}
 </script>

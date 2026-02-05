@@ -92,11 +92,12 @@
 </template>
 
 <script setup>
-const { locale, locales, setLocale, t } = useI18n()
+const { locale, locales, setLocale } = useI18n()
+const { basics } = useResume()
 
 // Generate initials from name
 const initials = computed(() => {
-  const name = t('hero.name')
+  const name = basics.value.name
   const parts = name.split(' ')
   if (parts.length >= 2) {
     return parts[0][0] + parts[parts.length - 1][0]
