@@ -68,11 +68,16 @@ useSeoMeta({
   ogDescription: 'Real-world projects with code examples, architecture decisions, and lessons learned'
 })
 
-const { data: projects } = await useAsyncData('projects', () =>
-  queryContent('/projects')
-    .sort({ date: -1 })
-    .find()
-)
+const { data: projects } = await useAsyncData('projects', async () => {
+  try {
+    return await queryContent('/projects')
+      .sort({ date: -1 })
+      .find()
+  } catch (error) {
+    console.error('Error fetching projects:', error)
+    return []
+  }
+})
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', {

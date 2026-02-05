@@ -120,12 +120,17 @@ useSeoMeta({
   ogType: 'website'
 })
 
-const { data: articles } = await useAsyncData('home-articles', () => 
-  queryContent('/articles')
-    .sort({ date: -1 })
-    .limit(4)
-    .find()
-)
+const { data: articles } = await useAsyncData('home-articles', async () => {
+  try {
+    return await queryContent('/articles')
+      .sort({ date: -1 })
+      .limit(4)
+      .find()
+  } catch (error) {
+    console.error('Error fetching articles:', error)
+    return []
+  }
+})
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', {

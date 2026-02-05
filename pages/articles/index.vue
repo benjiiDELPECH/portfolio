@@ -64,11 +64,16 @@ useSeoMeta({
   ogDescription: 'Technical articles, tutorials, and insights from the world of software engineering'
 })
 
-const { data: articles } = await useAsyncData('articles', () =>
-  queryContent('/articles')
-    .sort({ date: -1 })
-    .find()
-)
+const { data: articles } = await useAsyncData('articles', async () => {
+  try {
+    return await queryContent('/articles')
+      .sort({ date: -1 })
+      .find()
+  } catch (error) {
+    console.error('Error fetching articles:', error)
+    return []
+  }
+})
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', {
