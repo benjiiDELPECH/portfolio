@@ -77,7 +77,7 @@
         
         <div v-if="articles && articles.length > 0" class="grid md:grid-cols-2 gap-6">
           <NuxtLink 
-            v-for="article in articles.slice(0, 4)" 
+            v-for="article in articles" 
             :key="article._path"
             :to="article._path"
             class="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow"

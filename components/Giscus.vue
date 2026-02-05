@@ -18,9 +18,9 @@ onMounted(() => {
   const script = document.createElement('script')
   script.src = 'https://giscus.app/client.js'
   script.setAttribute('data-repo', 'benjiiDELPECH/portfolio') // Update with your repo
-  script.setAttribute('data-repo-id', '') // Add your repo ID from giscus.app
+  script.setAttribute('data-repo-id', '') // TODO: Add your repo ID from giscus.app
   script.setAttribute('data-category', 'Comments')
-  script.setAttribute('data-category-id', '') // Add your category ID from giscus.app
+  script.setAttribute('data-category-id', '') // TODO: Add your category ID from giscus.app
   script.setAttribute('data-mapping', 'pathname')
   script.setAttribute('data-strict', '0')
   script.setAttribute('data-reactions-enabled', '1')
