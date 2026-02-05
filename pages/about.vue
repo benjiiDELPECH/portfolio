@@ -217,7 +217,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const { t, locale } = useI18n()
 const { basics, work, education, skills, languages, getProfile, formatDateRange } = useResume()
 
