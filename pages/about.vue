@@ -186,6 +186,19 @@
           </div>
         </div>
 
+        <!-- Certifications -->
+        <div v-if="certificates.length > 0" class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+            {{ $t('about.certifications.title') }}
+          </h3>
+          <div class="space-y-3">
+            <div v-for="cert in certificates" :key="cert.name" class="border-l-2 border-blue-500 pl-3">
+              <p class="text-sm font-medium text-gray-900 dark:text-white">{{ cert.name }}</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">{{ cert.issuer }} · {{ cert.date }}</p>
+            </div>
+          </div>
+        </div>
+
         <!-- Languages -->
         <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
           <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
@@ -219,7 +232,7 @@
 
 <script setup lang="ts">
 const { t, locale } = useI18n()
-const { basics, work, education, skills, languages, getProfile, formatDateRange } = useResume()
+const { basics, work, education, skills, languages, certificates, getProfile, formatDateRange } = useResume()
 
 useSeoMeta({
   title: t('about.title'),

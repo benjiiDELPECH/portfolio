@@ -72,6 +72,13 @@ export interface ResumeInterest {
   keywords: string[]
 }
 
+export interface ResumeCertificate {
+  name: string
+  issuer: string
+  date: string
+  url?: string
+}
+
 export interface ResumeContent {
   basics: ResumeBasics
   work?: ResumeWork[]
@@ -81,7 +88,7 @@ export interface ResumeContent {
   projects?: ResumeProject[]
   interests?: ResumeInterest[]
   awards?: any[]
-  certificates?: any[]
+  certificates?: ResumeCertificate[]
   publications?: any[]
   volunteer?: any[]
   references?: any[]
@@ -106,6 +113,7 @@ export function useResume() {
   const languages = computed(() => resume.content.languages || [])
   const projects = computed(() => resume.content.projects || [])
   const interests = computed(() => resume.content.interests || [])
+  const certificates = computed(() => resume.content.certificates || [])
 
   // Helper to get social profile by network name
   const getProfile = (network: string) => {
@@ -164,6 +172,7 @@ export function useResume() {
     languages,
     projects,
     interests,
+    certificates,
     getProfile,
     formatDateRange,
     skillsByCategory,

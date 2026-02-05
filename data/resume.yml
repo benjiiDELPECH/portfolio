@@ -1,114 +1,208 @@
 # YAMLResume - https://yamlresume.dev
 # Fichier source unique pour le portfolio et la génération de CV PDF
-# Commande pour générer le PDF : npx yamlresume build data/resume.yml
+# Commande pour générer le PDF : npm run cv:build
 ---
 content:
   basics:
-    name: "Prénom Nom"
-    headline: "Développeur Full-Stack"
-    phone: "+33 6 XX XX XX XX"
+    name: "Benjamin Delpech"
+    headline: "Consultant Full Stack"
+    phone: ""
     email: "contact@example.com"
-    url: "https://example.com"
+    url: "https://benjamindelpech.dev"
     summary:
-      - Développeur passionné avec une expertise en développement web full-stack
-      - Expérience dans la conception et le développement d'applications web modernes
-      - Focus sur la qualité du code, les bonnes pratiques et l'expérience utilisateur
+      - Consultant Full Stack avec 6+ ans d'expérience en développement d'applications web critiques
+      - Expertise en architecture microservices, Spring Boot, Angular et Vue.js
+      - Spécialisé dans les systèmes à forte charge (100k+ utilisateurs) et les intégrations complexes
+      - Certifié AWS AI Practitioner, Spring Professional, Senior Angular et Vue.js Developer
     location:
-      city: "Paris"
-      region: "Île-de-France"
-      country: "France"
+      city: "Genève"
+      region: ""
+      country: "Suisse"
     profiles:
       - network: GitHub
-        url: "https://github.com/username"
-        username: "username"
+        url: "https://github.com/benjiiDELPECH"
+        username: "benjiiDELPECH"
       - network: LinkedIn
-        url: "https://linkedin.com/in/username"
-        username: "username"
+        url: "https://linkedin.com/in/"
+        username: ""
 
   work:
-    - name: "Entreprise actuelle"
-      url: "https://example.com"
-      position: "Développeur Full-Stack"
-      startDate: "Jan 2023"
+    - name: "État de Vaud"
+      url: ""
+      position: "Consultant Full Stack"
+      startDate: "Oct 2025"
       endDate: ""
       summary:
-        - Développement et maintenance d'applications web modernes
-        - Collaboration avec les équipes produit et design
-        - Mise en place de bonnes pratiques de développement
+        - Développement et stabilisation de microservices critiques pour le Portail Parents (100k+ utilisateurs)
+        - Harmonisation d'APIs REST, intégration ESB ActiveMQ, gestion du cycle de vie des événements métier
+        - Migration Testcontainers, standardisation JUnit5, tests d'intégration ESB
+        - Évolution de schémas SQL et corrections de contraintes
+        - Implémentation d'un provider email OTP Keycloak et nettoyage theme/realm
       keywords:
-        - TypeScript
-        - Vue.js
-        - Node.js
+        - Spring Boot
+        - Microservices
+        - Keycloak
+        - ActiveMQ
+        - Testcontainers
 
-    - name: "Entreprise précédente"
-      url: "https://example.com"
-      position: "Développeur Backend"
-      startDate: "Sep 2020"
-      endDate: "Dec 2022"
+    - name: "SmartWave"
+      url: ""
+      position: "Consultant Full Stack - Projet CV/AI Interne"
+      startDate: "Jun 2025"
+      endDate: "Sep 2025"
       summary:
-        - Conception et développement d'APIs RESTful
-        - Optimisation des performances et de la scalabilité
-        - Participation aux revues de code et mentorat
+        - Conception d'une AI Gateway centralisée pour AWS Bedrock avec rate limiting Bucket4j
+        - Parser CV Word/PDF avec normalisation et classification basées sur l'IA
+        - Fédération OIDC Bitbucket ↔ AWS via STS assume-role (CI sans credentials)
+        - Architecture Angular 20 smart/dumb avec SignalStore et mode brouillon résilient
+      keywords:
+        - AWS Bedrock
+        - Spring AI
+        - Angular 20
+        - SignalStore
+        - OIDC
+
+    - name: "État de Genève"
+      url: ""
+      position: "Consultant Full Stack"
+      startDate: "Jul 2024"
+      endDate: "Dec 2024"
+      summary:
+        - Microservices avec Spring Boot et intégration de vues Oracle
+        - Architecture BFF OAuth2 avec Spring Cloud Gateway
+        - Modernisation Vue 3 e-démarches et bibliothèque de composants réutilisables
+        - Développement de librairies avec Storybook, Vitest, Rollup
+        - Composants réutilisables (wizard forms, validation, scroll-to-error)
+      keywords:
+        - Spring Boot
+        - Vue 3
+        - OAuth2
+        - Storybook
+        - Oracle
+
+    - name: "Hôpitaux Universitaires de Genève"
+      url: ""
+      position: "Consultant Full Stack"
+      startDate: "Dec 2023"
+      endDate: "Jul 2024"
+      summary:
+        - Vue de calcul de score de soins infirmiers basée sur les codes d'assurance
+        - Interface de feedback d'alertes pour les médecins
+        - Évolutions fullstack sur les règles de remboursement d'assurance
+      keywords:
+        - Spring Boot
+        - Healthcare
+        - Insurance
+
+    - name: "Université de Bordeaux"
+      url: ""
+      position: "Développeur Full Stack"
+      startDate: "May 2022"
+      endDate: "Sep 2023"
+      summary:
+        - Frontend Vue3 + Quasar pour plateforme d'évaluation étudiante
+        - API Spring Boot pour calcul de moyennes pondérées
+        - Intégration CI Docker avec Nginx
+        - Gestion des rôles Angular et Spring Security, optimisation LDAP
+        - Tests E2E Cypress et tests d'intégration Karate
+      keywords:
+        - Vue 3
+        - Quasar
+        - Spring Boot
+        - Cypress
+        - Docker
+
+    - name: "Ennov"
+      url: ""
+      position: "Développeur Full Stack"
+      startDate: "Jun 2019"
+      endDate: "May 2022"
+      summary:
+        - Optimisation de performance pour AP-HP Paris (100k+ utilisateurs)
+        - Implémentation d'une file d'attente de jobs basée sur la base de données
+        - Refactoring massif JSP et optimisation SQL
+        - Analyse de dumps de 100GB pour le support
+        - Importateur de dossiers AMM utilisant un parser SAX
       keywords:
         - Java
-        - Spring Boot
-        - PostgreSQL
+        - Performance
+        - SQL
+        - JSP
 
   education:
-    - institution: "École / Université"
-      url: "https://example.com"
+    - institution: "Université de Poitiers"
+      url: ""
       degree: "Master"
-      area: "Informatique"
+      area: "Ingénierie Santé"
       startDate: "Sep 2018"
       endDate: "Jul 2020"
       summary:
-        - Spécialisation en développement logiciel
-        - Projets pratiques en équipe
-
-    - institution: "École / Université"
-      url: "https://example.com"
-      degree: "Bachelor"
-      area: "Informatique"
-      startDate: "Sep 2015"
-      endDate: "Jul 2018"
-      summary:
-        - Formation généraliste en informatique
+        - Formation en ingénierie appliquée au domaine de la santé
 
   skills:
-    - name: "Développement Backend"
+    - name: "Backend"
       level: "Expert"
       keywords:
         - Java
         - Kotlin
-        - Node.js
-        - Spring Boot
-        - PostgreSQL
+        - Spring Boot 3
+        - Spring AI
+        - WebFlux
+        - JPA
+        - Keycloak
+        - OAuth2
+        - ActiveMQ
 
-    - name: "Développement Frontend"
-      level: "Advanced"
+    - name: "Frontend"
+      level: "Expert"
       keywords:
+        - Angular
+        - Vue 3
         - TypeScript
-        - Vue.js
-        - Nuxt
-        - React
+        - RxJS
+        - Pinia
         - Tailwind CSS
 
-    - name: "DevOps & Infrastructure"
-      level: "Intermediate"
-      keywords:
-        - Docker
-        - Kubernetes
-        - AWS
-        - CI/CD
-        - Linux
-
-    - name: "Outils & Méthodologies"
+    - name: "Databases"
       level: "Advanced"
       keywords:
+        - Oracle
+        - PostgreSQL
+        - MySQL
+        - SQL Server
+        - Redis
+
+    - name: "DevOps & Tools"
+      level: "Advanced"
+      keywords:
+        - Docker
+        - AWS
         - Git
-        - Agile/Scrum
-        - REST API
-        - Tests automatisés
+        - GitLab CI
+        - Testcontainers
+        - Cypress
+        - Linux
+
+  certificates:
+    - name: "AWS AI Practitioner Foundational"
+      issuer: "AWS"
+      date: "2025"
+      url: ""
+
+    - name: "Senior Angular Developer"
+      issuer: "certificates.dev"
+      date: "2025"
+      url: ""
+
+    - name: "Senior Vue.js Developer"
+      issuer: "certificates.dev"
+      date: "2025"
+      url: ""
+
+    - name: "Spring Professional Certification"
+      issuer: "VMware"
+      date: "2025"
+      url: ""
 
   languages:
     - language: "Français"
@@ -117,33 +211,16 @@ content:
     - language: "Anglais"
       fluency: "Full Professional Proficiency"
       keywords:
-        - "TOEIC 900+"
+        - "CEFR B2"
 
-  projects:
-    - name: "Projet exemple"
-      url: "https://github.com/username/project"
-      description: "Description courte du projet"
-      startDate: "Jan 2024"
-      endDate: "Mar 2024"
-      summary:
-        - Développement d'une application web complète
-        - Utilisation de technologies modernes
-      keywords:
-        - Vue.js
-        - Node.js
-        - MongoDB
+  projects: []
 
   interests:
     - name: "Technologies"
       keywords:
+        - IA / LLM
+        - Cloud Architecture
         - Open Source
-        - IA/ML
-        - Web3
-    - name: "Hobbies"
-      keywords:
-        - Sport
-        - Musique
-        - Voyages
 
 locale:
   language: fr

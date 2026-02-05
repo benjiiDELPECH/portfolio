@@ -65,6 +65,9 @@
     "languages": {
       "title": "Langues"
     },
+    "certifications": {
+      "title": "Certifications"
+    },
     "downloadCV": "Télécharger mon CV"
   },
   "footer": {
