@@ -6,23 +6,77 @@
     "lab": "Lab",
     "about": "À propos"
   },
-  "home": {
-    "title": "Portfolio",
-    "subtitle": "Une collection complète d'articles, projets et expériences documentant des perspectives d'ingénierie, les meilleures pratiques et des explorations techniques.",
-    "browseArticles": "Parcourir les Articles",
-    "viewProjects": "Voir les Projets",
-    "technicalArticles": "Articles Techniques",
-    "technicalArticlesDesc": "Articles approfondis sur les concepts d'ingénierie, tutoriels et meilleures pratiques.",
-    "projects": "Projets",
-    "projectsDesc": "Projets réels avec des exemples de code, décisions d'architecture et leçons apprises.",
-    "labExperiments": "Expériences Lab",
-    "labExperimentsDesc": "Fonctionnalités expérimentales, prototypes et explorations de nouvelles technologies.",
-    "recentArticles": "Articles Récents",
-    "viewAll": "Voir tout",
-    "noArticles": "Pas encore d'articles. Revenez bientôt !"
+  "hero": {
+    "greeting": "Bonjour, je suis",
+    "name": "Prénom Nom",
+    "title": "Développeur Full-Stack",
+    "description": "Je conçois et développe des applications web modernes, en mettant l'accent sur la qualité du code, les bonnes pratiques et l'expérience utilisateur.",
+    "viewProjects": "Voir mes projets",
+    "aboutMe": "En savoir plus"
+  },
+  "skills": {
+    "title": "Compétences",
+    "subtitle": "Les technologies et outils que j'utilise au quotidien pour créer des solutions performantes.",
+    "development": {
+      "title": "Développement",
+      "description": "Création d'applications web et APIs robustes avec les technologies modernes."
+    },
+    "infrastructure": {
+      "title": "Infrastructure",
+      "description": "Déploiement et gestion d'applications dans le cloud avec les meilleures pratiques DevOps."
+    },
+    "other": {
+      "title": "Autres",
+      "description": "Méthodologies et outils complémentaires pour un développement efficace."
+    }
+  },
+  "projects": {
+    "featuredTitle": "Projets",
+    "featuredSubtitle": "Une sélection de projets sur lesquels j'ai travaillé.",
+    "noProjects": "Aucun projet pour le moment. Revenez bientôt !"
+  },
+  "articles": {
+    "recentTitle": "Articles récents",
+    "recentSubtitle": "Réflexions, tutoriels et retours d'expérience sur le développement.",
+    "noArticles": "Aucun article pour le moment. Revenez bientôt !"
+  },
+  "contact": {
+    "title": "Intéressé par une collaboration ?",
+    "subtitle": "Je suis ouvert aux opportunités et aux nouveaux projets. N'hésitez pas à me contacter.",
+    "email": "Me contacter"
+  },
+  "common": {
+    "viewAll": "Voir tout"
+  },
+  "about": {
+    "title": "À propos",
+    "subtitle": "Développeur passionné par la création de solutions techniques élégantes.",
+    "intro": {
+      "title": "Qui suis-je ?",
+      "content": "Développeur passionné avec une expertise en développement web full-stack. J'aime créer des applications performantes et maintenables, en suivant les meilleures pratiques de l'industrie."
+    },
+    "experience": {
+      "title": "Expérience professionnelle"
+    },
+    "education": {
+      "title": "Formation"
+    },
+    "skills": {
+      "title": "Compétences techniques"
+    },
+    "languages": {
+      "title": "Langues"
+    },
+    "downloadCV": "Télécharger mon CV"
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "connect": "Me suivre",
+    "rights": "Tous droits réservés.",
+    "builtWith": "Construit avec Nuxt 3 et Tailwind CSS"
   },
   "site": {
     "title": "Portfolio",
-    "description": "Un portfolio complet présentant des articles, projets et expériences"
+    "description": "Portfolio personnel présentant mes projets, articles et expériences"
   }
 }

@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
           <NuxtLink to="/" class="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-            KB
+            {{ initials }}
           </NuxtLink>
         </div>
         
@@ -92,7 +92,17 @@
 </template>
 
 <script setup>
-const { locale, locales, setLocale } = useI18n()
+const { locale, locales, setLocale, t } = useI18n()
+
+// Generate initials from name
+const initials = computed(() => {
+  const name = t('hero.name')
+  const parts = name.split(' ')
+  if (parts.length >= 2) {
+    return parts[0][0] + parts[parts.length - 1][0]
+  }
+  return name.substring(0, 2).toUpperCase()
+})
 
 const navigation = [
   { name: 'nav.home', path: '/' },

@@ -6,23 +6,77 @@
     "lab": "Lab",
     "about": "About"
   },
-  "home": {
-    "title": "Portfolio",
-    "subtitle": "A comprehensive collection of articles, projects, and experiments documenting engineering insights, best practices, and technical explorations.",
-    "browseArticles": "Browse Articles",
-    "viewProjects": "View Projects",
-    "technicalArticles": "Technical Articles",
-    "technicalArticlesDesc": "In-depth articles covering engineering concepts, tutorials, and best practices.",
-    "projects": "Projects",
-    "projectsDesc": "Real-world projects with code examples, architecture decisions, and lessons learned.",
-    "labExperiments": "Lab Experiments",
-    "labExperimentsDesc": "Experimental features, prototypes, and explorations of new technologies.",
-    "recentArticles": "Recent Articles",
-    "viewAll": "View all",
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "First Last",
+    "title": "Full-Stack Developer",
+    "description": "I design and build modern web applications, focusing on code quality, best practices, and user experience.",
+    "viewProjects": "View my projects",
+    "aboutMe": "Learn more"
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "The technologies and tools I use daily to create performant solutions.",
+    "development": {
+      "title": "Development",
+      "description": "Building robust web applications and APIs with modern technologies."
+    },
+    "infrastructure": {
+      "title": "Infrastructure",
+      "description": "Deploying and managing applications in the cloud with DevOps best practices."
+    },
+    "other": {
+      "title": "Other",
+      "description": "Complementary methodologies and tools for efficient development."
+    }
+  },
+  "projects": {
+    "featuredTitle": "Projects",
+    "featuredSubtitle": "A selection of projects I've worked on.",
+    "noProjects": "No projects yet. Check back soon!"
+  },
+  "articles": {
+    "recentTitle": "Recent Articles",
+    "recentSubtitle": "Thoughts, tutorials, and insights about development.",
     "noArticles": "No articles yet. Check back soon!"
+  },
+  "contact": {
+    "title": "Interested in working together?",
+    "subtitle": "I'm open to opportunities and new projects. Feel free to reach out.",
+    "email": "Contact me"
+  },
+  "common": {
+    "viewAll": "View all"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Developer passionate about creating elegant technical solutions.",
+    "intro": {
+      "title": "Who am I?",
+      "content": "Passionate developer with expertise in full-stack web development. I enjoy building performant and maintainable applications, following industry best practices."
+    },
+    "experience": {
+      "title": "Work Experience"
+    },
+    "education": {
+      "title": "Education"
+    },
+    "skills": {
+      "title": "Technical Skills"
+    },
+    "languages": {
+      "title": "Languages"
+    },
+    "downloadCV": "Download my CV"
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "connect": "Connect",
+    "rights": "All rights reserved.",
+    "builtWith": "Built with Nuxt 3 and Tailwind CSS"
   },
   "site": {
     "title": "Portfolio",
-    "description": "A comprehensive portfolio showcasing articles, projects, and experiments"
+    "description": "Personal portfolio showcasing my projects, articles, and experiences"
   }
 }
