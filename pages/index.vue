@@ -4,23 +4,23 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <h1 class="text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Engineering Knowledge Base
+            {{ $t('home.title') }}
           </h1>
           <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-            A comprehensive collection of articles, projects, and experiments documenting engineering insights, best practices, and technical explorations.
+            {{ $t('home.subtitle') }}
           </p>
           <div class="flex justify-center gap-4">
             <NuxtLink 
               to="/articles" 
               class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
             >
-              Browse Articles
+              {{ $t('home.browseArticles') }}
             </NuxtLink>
             <NuxtLink 
               to="/projects" 
               class="px-6 py-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg font-medium transition-colors"
             >
-              View Projects
+              {{ $t('home.viewProjects') }}
             </NuxtLink>
           </div>
         </div>
@@ -35,9 +35,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Technical Articles</h3>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{{ $t('home.technicalArticles') }}</h3>
           <p class="text-gray-600 dark:text-gray-400">
-            In-depth articles covering engineering concepts, tutorials, and best practices.
+            {{ $t('home.technicalArticlesDesc') }}
           </p>
         </div>
 
@@ -47,9 +47,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Projects</h3>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{{ $t('home.projects') }}</h3>
           <p class="text-gray-600 dark:text-gray-400">
-            Real-world projects with code examples, architecture decisions, and lessons learned.
+            {{ $t('home.projectsDesc') }}
           </p>
         </div>
 
@@ -59,9 +59,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Lab Experiments</h3>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{{ $t('home.labExperiments') }}</h3>
           <p class="text-gray-600 dark:text-gray-400">
-            Experimental features, prototypes, and explorations of new technologies.
+            {{ $t('home.labExperimentsDesc') }}
           </p>
         </div>
       </div>
@@ -69,9 +69,9 @@
       <!-- Recent Articles Section -->
       <div class="mt-20">
         <div class="flex justify-between items-center mb-8">
-          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Recent Articles</h2>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">{{ $t('home.recentArticles') }}</h2>
           <NuxtLink to="/articles" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
-            View all →
+            {{ $t('home.viewAll') }} →
           </NuxtLink>
         </div>
         
@@ -104,7 +104,7 @@
         </div>
         
         <div v-else class="text-center py-12 text-gray-500 dark:text-gray-400">
-          No articles yet. Check back soon!
+          {{ $t('home.noArticles') }}
         </div>
       </div>
     </div>
@@ -112,11 +112,13 @@
 </template>
 
 <script setup>
+const { t } = useI18n()
+
 useSeoMeta({
   title: 'Home',
-  description: 'A comprehensive engineering knowledge base with articles, projects, and experiments',
-  ogTitle: 'Engineering Knowledge Base',
-  ogDescription: 'A comprehensive engineering knowledge base with articles, projects, and experiments',
+  description: t('site.description'),
+  ogTitle: t('site.title'),
+  ogDescription: t('site.description'),
   ogType: 'website'
 })
 

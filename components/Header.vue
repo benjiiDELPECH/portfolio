@@ -16,11 +16,37 @@
             class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
             active-class="text-blue-600 dark:text-blue-400"
           >
-            {{ item.name }}
+            {{ $t(item.name) }}
           </NuxtLink>
         </div>
 
         <div class="flex items-center space-x-4">
+          <!-- Language Switcher -->
+          <div class="relative">
+            <button 
+              @click="langMenuOpen = !langMenuOpen"
+              class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center gap-1"
+              aria-label="Change language"
+            >
+              <svg class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 uppercase">{{ locale }}</span>
+            </button>
+            
+            <div v-if="langMenuOpen" class="absolute right-0 mt-2 w-32 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 z-50">
+              <button
+                v-for="loc in availableLocales"
+                :key="loc.code"
+                @click="setLocale(loc.code)"
+                class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                :class="{ 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400': locale === loc.code }"
+              >
+                {{ loc.name }}
+              </button>
+            </div>
+          </div>
+
           <button 
             @click="toggleDarkMode"
             class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -57,7 +83,7 @@
             active-class="text-blue-600 dark:text-blue-400"
             @click="mobileMenuOpen = false"
           >
-            {{ item.name }}
+            {{ $t(item.name) }}
           </NuxtLink>
         </div>
       </div>
@@ -66,17 +92,25 @@
 </template>
 
 <script setup>
+const { locale, locales, setLocale } = useI18n()
+
 const navigation = [
-  { name: 'Home', path: '/' },
-  { name: 'Articles', path: '/articles' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Lab', path: '/lab' },
-  { name: 'About', path: '/about' }
+  { name: 'nav.home', path: '/' },
+  { name: 'nav.articles', path: '/articles' },
+  { name: 'nav.projects', path: '/projects' },
+  { name: 'nav.lab', path: '/lab' },
+  { name: 'nav.about', path: '/about' }
 ]
 
+const availableLocales = computed(() => {
+  return locales.value.filter((i) => i.code !== locale.value)
+})
+
 const mobileMenuOpen = ref(false)
+const langMenuOpen = ref(false)
 const isDark = ref(false)
 
+// Close language menu when clicking outside
 onMounted(() => {
   // Check for saved theme preference or default to system preference
   const savedTheme = localStorage.getItem('theme')
@@ -87,6 +121,13 @@ onMounted(() => {
   if (isDark.value) {
     document.documentElement.classList.add('dark')
   }
+
+  // Close language menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.relative')) {
+      langMenuOpen.value = false
+    }
+  })
 })
 
 const toggleDarkMode = () => {

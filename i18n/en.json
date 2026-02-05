@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Home",
+    "articles": "Articles",
+    "projects": "Projects",
+    "lab": "Lab",
+    "about": "About"
+  },
+  "home": {
+    "title": "Portfolio",
+    "subtitle": "A comprehensive collection of articles, projects, and experiments documenting engineering insights, best practices, and technical explorations.",
+    "browseArticles": "Browse Articles",
+    "viewProjects": "View Projects",
+    "technicalArticles": "Technical Articles",
+    "technicalArticlesDesc": "In-depth articles covering engineering concepts, tutorials, and best practices.",
+    "projects": "Projects",
+    "projectsDesc": "Real-world projects with code examples, architecture decisions, and lessons learned.",
+    "labExperiments": "Lab Experiments",
+    "labExperimentsDesc": "Experimental features, prototypes, and explorations of new technologies.",
+    "recentArticles": "Recent Articles",
+    "viewAll": "View all",
+    "noArticles": "No articles yet. Check back soon!"
+  },
+  "site": {
+    "title": "Portfolio",
+    "description": "A comprehensive portfolio showcasing articles, projects, and experiments"
+  }
+}
