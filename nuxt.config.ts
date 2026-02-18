@@ -39,7 +39,7 @@ export default defineNuxtConfig({
         default: 'github-light',
         dark: 'github-dark'
       },
-      preload: ['javascript', 'typescript', 'python', 'bash', 'json', 'yaml', 'markdown']
+      preload: ['javascript', 'typescript', 'kotlin', 'java', 'python', 'bash', 'json', 'yaml', 'markdown']
     },
     markdown: {
       toc: {
