@@ -14,21 +14,45 @@ export default {
           css: {
             maxWidth: 'none',
             color: theme('colors.gray.700'),
+            p: {
+              marginTop: '0.75em',
+              marginBottom: '0.75em'
+            },
             h1: { 
               color: theme('colors.gray.900'),
-              textDecoration: 'none'
+              textDecoration: 'none',
+              marginTop: '1.5em',
+              marginBottom: '0.5em'
             },
             h2: { 
               color: theme('colors.gray.900'),
-              textDecoration: 'none'
+              textDecoration: 'none',
+              marginTop: '1.5em',
+              marginBottom: '0.5em'
             },
             h3: { 
               color: theme('colors.gray.900'),
-              textDecoration: 'none'
+              textDecoration: 'none',
+              marginTop: '1.25em',
+              marginBottom: '0.5em'
             },
             h4: { 
               color: theme('colors.gray.900'),
-              textDecoration: 'none'
+              textDecoration: 'none',
+              marginTop: '1em',
+              marginBottom: '0.5em'
+            },
+            ul: {
+              marginTop: '0.5em',
+              marginBottom: '0.5em'
+            },
+            ol: {
+              marginTop: '0.5em',
+              marginBottom: '0.5em'
+            },
+            li: {
+              marginTop: '0.25em',
+              marginBottom: '0.25em'
             },
             a: {
               color: theme('colors.blue.600'),
