@@ -6,8 +6,6 @@ readingTime: 5
 tags: ["AI", "Claude", "Software Design", "LLM", "Kotlin"]
 ---
 
-# Claude 4.5 et les fondamentaux : quand l'IA ne challenge pas le design
-
 L'IA exécute extrêmement bien. Mais elle ne challenge pas les choix de conception.
 
 ## Le problème

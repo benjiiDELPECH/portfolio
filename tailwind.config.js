@@ -14,6 +14,22 @@ export default {
           css: {
             maxWidth: 'none',
             color: theme('colors.gray.700'),
+            h1: { 
+              color: theme('colors.gray.900'),
+              textDecoration: 'none'
+            },
+            h2: { 
+              color: theme('colors.gray.900'),
+              textDecoration: 'none'
+            },
+            h3: { 
+              color: theme('colors.gray.900'),
+              textDecoration: 'none'
+            },
+            h4: { 
+              color: theme('colors.gray.900'),
+              textDecoration: 'none'
+            },
             a: {
               color: theme('colors.blue.600'),
               '&:hover': {
