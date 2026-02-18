@@ -41,7 +41,7 @@
       </div>
     </header>
 
-    <div class="prose dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-headings:no-underline prose-a:text-blue-600 prose-p:my-2 prose-p:leading-normal prose-li:my-1 prose-h2:mt-6 prose-h2:mb-3 prose-h3:mt-4 prose-h3:mb-2 [&>p]:leading-7 [&>ul]:leading-7 [&>ol]:leading-7">
+    <div class="prose dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-headings:no-underline prose-a:no-underline hover:prose-a:underline prose-p:my-2 prose-p:leading-normal prose-li:my-1 prose-h2:mt-6 prose-h2:mb-3 prose-h3:mt-4 prose-h3:mb-2 [&>p]:leading-7 [&>ul]:leading-7 [&>ol]:leading-7 [&_h2>a]:no-underline [&_h3>a]:no-underline [&_h2>a]:text-inherit [&_h3>a]:text-inherit">
       <ContentRenderer :value="page" />
     </div>
 
