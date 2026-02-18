@@ -10,10 +10,10 @@
     <div v-if="articles && articles.length > 0" class="space-y-6">
       <article 
         v-for="article in articles" 
-        :key="article._path"
+        :key="article.path"
         class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow"
       >
-        <NuxtLink :to="article._path" class="block">
+        <NuxtLink :to="article.path" class="block">
           <div class="flex justify-between items-start mb-3">
             <div class="text-sm text-gray-500 dark:text-gray-400">
               {{ formatDate(article.date) }}
@@ -66,9 +66,10 @@ useSeoMeta({
 
 const { data: articles } = await useAsyncData('articles', async () => {
   try {
-    return await queryContent('/articles')
-      .sort({ date: -1 })
-      .find()
+    const result = await queryCollection('articles')
+      .order('date', 'DESC')
+      .all()
+    return result
   } catch (error) {
     console.error('Error fetching articles:', error)
     return []

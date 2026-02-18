@@ -52,9 +52,19 @@
 
 <script setup>
 const route = useRoute()
-const { data: page } = await useAsyncData(`article-${route.path}`, () => 
-  queryContent(route.path).findOne()
-)
+const slug = route.params.slug ? (Array.isArray(route.params.slug) ? route.params.slug.join('/') : route.params.slug) : ''
+
+const { data: page } = await useAsyncData(`article-${slug}`, async () => {
+  try {
+    const result = await queryCollection('articles')
+      .path(`/articles/${slug}`)
+      .first()
+    return result
+  } catch (error) {
+    console.error('Error fetching article:', error)
+    return null
+  }
+})
 
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Article not found' })
