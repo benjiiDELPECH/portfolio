@@ -41,7 +41,7 @@
       </div>
     </header>
 
-    <div class="prose prose-lg dark:prose-invert max-w-none">
+    <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-headings:no-underline prose-a:text-blue-600 prose-p:my-2 prose-p:leading-relaxed prose-li:my-1 prose-h2:mt-6 prose-h2:mb-3 prose-h3:mt-4 prose-h3:mb-2">
       <ContentRenderer :value="page" />
     </div>
 
