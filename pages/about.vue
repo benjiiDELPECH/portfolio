@@ -113,13 +113,6 @@
       <div class="space-y-8">
         <!-- Profile Card -->
         <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 text-center">
-          <div class="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden ring-4 ring-blue-100 dark:ring-blue-900/30">
-            <img 
-              src="/profile.png" 
-              alt="Benjamin Delpech"
-              class="w-full h-full object-cover"
-            />
-          </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
             {{ basics.name }}
           </h3>

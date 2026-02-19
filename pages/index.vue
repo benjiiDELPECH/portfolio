@@ -32,16 +32,6 @@
               </NuxtLink>
             </div>
           </div>
-          <div class="hidden lg:flex justify-center">
-            <div class="w-72 h-72 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-20 blur-3xl absolute"></div>
-            <div class="relative w-64 h-64 rounded-2xl overflow-hidden ring-4 ring-white/50 dark:ring-gray-700/50 shadow-xl">
-              <img 
-                src="/profile.png" 
-                alt="Benjamin Delpech"
-                class="w-full h-full object-cover"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </section>
