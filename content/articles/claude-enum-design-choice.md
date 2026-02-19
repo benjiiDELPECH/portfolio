@@ -47,6 +47,8 @@ Les catégories de dépenses ? C'est un ensemble ouvert.
 - Tags → impossible de tout prévoir
 - Devises → nouvelles cryptos chaque jour
 
+Si l'utilisateur peut ajouter des valeurs, ce n'est pas un enum.
+
 ## Pourquoi Claude génère ce résultat ?
 
 Un junior aurait posé la question : *"Tu voudras en ajouter d'autres ?"*
@@ -61,6 +63,8 @@ Le modèle prédit le token le plus probable. Dans les données d'entraînement,
 
 Claude n'a pas de boucle interne qui demande : "Est-ce le bon pattern pour ce use case ?" Il exécute, il ne challenge pas.
 
+> L'IA optimise pour la probabilité statistique, pas pour ton contexte métier.
+
 **3. Entraînement = moyenne du marché**
 
 Le corpus d'entraînement contient du code "moyen". Les patterns dominants gagnent, pas les patterns corrects.
@@ -71,11 +75,13 @@ Je n'ai pas écrit "catégories personnalisables". L'IA a pris la décision par 
 
 **5. Choix produit, pas limitation technique**
 
-Les LLMs ont un "Chain of Thought" interne. Anthropic/OpenAI/Google **pourraient** ajouter une étape de validation design. Ils ne le font pas :
-- Latence (chaque question = secondes en plus)
-- Coût (plus de tokens = plus cher)
-- Friction UX (les utilisateurs veulent du code, pas un interrogatoire)
-- Le marché récompense la vitesse, pas la rigueur
+Les LLMs peuvent faire du raisonnement multi-étapes (Chain of Thought, Extended Thinking). Anthropic a Claude avec "Extended Thinking", OpenAI a o1/o3. Ces modes existent mais ne sont **pas activés par défaut** pour la génération de code.
+
+Pourquoi ? Anthropic/OpenAI/Google **pourraient** ajouter une étape de validation design. Ils ne le font pas :
+- Latence : un utilisateur qui attend 30 secondes pour un bout de code perd patience
+- Coût : plus de tokens de raisonnement = facture plus élevée
+- Friction UX : les utilisateurs veulent du code, pas un interrogatoire
+- La majorité des users veulent du code rapide, pas une revue design
 
 ## Et maintenant ?
 
@@ -85,14 +91,12 @@ On peut tenter d'ajouter des instructions dans les fichiers de configuration (`.
 
 ## Limites connues
 
+Dans un MVP, un enum peut suffire. Mais si tu veux un produit évolutif, la question se pose dès le départ.
+
 1. **Context window limité** — Plus la conversation est longue, plus les instructions initiales sont diluées
-
 2. **Lecture non garantie** — Les fichiers de config ne sont pas toujours lus selon le contexte
-
 3. **Priorité floue** — Si ton prompt dit "fais un enum" et ta config dit "challenge les enums", qui gagne ?
-
 4. **Interprétation variable** — L'IA peut interpréter tes instructions différemment selon le contexte
-
 5. **Mode agent vs chat** — En mode agent (Cursor Composer, Copilot Agent), les règles sont parfois ignorées
 
 ## Pistes de recherche
@@ -104,7 +108,7 @@ On peut tenter d'ajouter des instructions dans les fichiers de configuration (`.
 
 ## Conclusion
 
-La technologie permet de faire mieux. Mais le marché récompense la vitesse, pas la rigueur.
+La technologie permet de faire mieux. Mais le mode par défaut récompense davantage la vitesse que la justesse.
 
 **C'est un choix produit, pas une limitation technique.**
 
