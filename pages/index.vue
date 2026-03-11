@@ -1,122 +1,80 @@
 <template>
-  <div>
+  <div class="animate-fade-in">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <section class="px-6 md:px-10 pt-10 pb-8">
+      <div class="max-w-5xl">
+        <div class="flex items-start gap-6 mb-8">
+          <div class="w-20 h-20 rounded-apple-lg bg-gradient-to-br from-apple-accent to-apple-purple flex items-center justify-center text-white text-2xl font-bold shadow-apple-md flex-shrink-0">
+            {{ initials }}
+          </div>
           <div>
-            <p class="text-blue-600 dark:text-blue-400 font-medium mb-4">
-              {{ $t('hero.greeting') }}
-            </p>
-            <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+            <h1 class="text-apple-hero text-apple-text dark:text-apple-dark-text mb-1">
               {{ basics.name }}
             </h1>
-            <h2 class="text-2xl lg:text-3xl font-semibold text-gray-600 dark:text-gray-300 mb-6">
+            <p class="text-apple-title3 text-apple-text-secondary dark:text-apple-dark-text-secondary mb-3">
               {{ basics.headline }}
-            </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl">
+            </p>
+            <p class="text-apple-body text-apple-text-secondary dark:text-apple-dark-text-secondary max-w-2xl">
               {{ basics.summary?.[0] || $t('hero.description') }}
             </p>
-            <div class="flex flex-wrap gap-4">
-              <NuxtLink 
-                to="/projects" 
-                class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
-              >
-                {{ $t('hero.viewProjects') }}
-              </NuxtLink>
-              <NuxtLink 
-                to="/about" 
-                class="px-6 py-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg font-medium transition-colors"
-              >
-                {{ $t('hero.aboutMe') }}
-              </NuxtLink>
-            </div>
           </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="flex gap-3">
+          <NuxtLink 
+            to="/projects"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-apple-accent hover:bg-apple-accent-hover text-white rounded-full text-apple-subhead font-medium transition-colors duration-150 shadow-apple"
+          >
+            {{ $t('hero.viewProjects') }}
+          </NuxtLink>
+          <NuxtLink 
+            to="/about"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-black/[0.05] dark:bg-white/[0.1] hover:bg-black/[0.08] dark:hover:bg-white/[0.14] text-apple-text dark:text-apple-dark-text rounded-full text-apple-subhead font-medium transition-colors duration-150"
+          >
+            {{ $t('hero.aboutMe') }}
+          </NuxtLink>
         </div>
       </div>
     </section>
+
+    <!-- Divider -->
+    <div class="h-px bg-apple-border dark:bg-apple-dark-border mx-6 md:mx-10" />
 
     <!-- Skills Section -->
-    <section class="py-16 bg-white dark:bg-gray-900">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            {{ $t('skills.title') }}
-          </h2>
-          <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            {{ $t('skills.subtitle') }}
-          </p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-          <!-- Backend/Development Skills -->
-          <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {{ skills[0]?.name || $t('skills.development.title') }}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-              {{ $t('skills.development.description') }}
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span 
-                v-for="skill in skills[0]?.keywords || []" 
-                :key="skill" 
-                class="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full"
-              >
-                {{ skill }}
-              </span>
-            </div>
-          </div>
+    <section class="px-6 md:px-10 py-8">
+      <div class="max-w-5xl">
+        <h2 class="text-apple-title1 text-apple-text dark:text-apple-dark-text mb-1">
+          {{ $t('skills.title') }}
+        </h2>
+        <p class="text-apple-callout text-apple-text-secondary dark:text-apple-dark-text-secondary mb-6">
+          {{ $t('skills.subtitle') }}
+        </p>
 
-          <!-- Frontend Skills -->
-          <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-            <div class="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div 
+            v-for="(skill, index) in skills.slice(0, 3)" 
+            :key="skill.name"
+            class="group bg-apple-card dark:bg-apple-dark-card rounded-apple-lg p-5 shadow-apple-card hover:shadow-apple-card-hover transition-shadow duration-200"
+          >
+            <div class="w-8 h-8 rounded-apple flex items-center justify-center mb-3" :class="skillColors[index]">
+              <svg class="w-4 h-4" :class="skillIconColors[index]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :d="skillPaths[index]" />
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {{ skills[1]?.name || $t('skills.infrastructure.title') }}
+            <h3 class="text-apple-headline text-apple-text dark:text-apple-dark-text mb-1.5">
+              {{ skill.name }}
             </h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-              {{ $t('skills.infrastructure.description') }}
+            <p class="text-apple-footnote text-apple-text-secondary dark:text-apple-dark-text-secondary mb-3">
+              {{ $t(`skills.${['development', 'infrastructure', 'other'][index]}.description`) }}
             </p>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-1.5">
               <span 
-                v-for="skill in skills[1]?.keywords || []" 
-                :key="skill" 
-                class="px-3 py-1 text-sm bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full"
+                v-for="keyword in skill.keywords?.slice(0, 6)" 
+                :key="keyword"
+                class="px-2 py-0.5 text-apple-caption1 font-medium bg-black/[0.04] dark:bg-white/[0.06] text-apple-text-secondary dark:text-apple-dark-text-secondary rounded-md"
               >
-                {{ skill }}
-              </span>
-            </div>
-          </div>
-
-          <!-- DevOps/Infrastructure Skills -->
-          <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-            <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {{ skills[2]?.name || $t('skills.other.title') }}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-              {{ $t('skills.other.description') }}
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span 
-                v-for="skill in skills[2]?.keywords || []" 
-                :key="skill" 
-                class="px-3 py-1 text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full"
-              >
-                {{ skill }}
+                {{ keyword }}
               </span>
             </div>
           </div>
@@ -124,167 +82,184 @@
       </div>
     </section>
 
-    <!-- Featured Projects Section -->
-    <section class="py-16 bg-gray-50 dark:bg-gray-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center mb-12">
-          <div>
-            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              {{ $t('projects.featuredTitle') }}
-            </h2>
-            <p class="text-gray-600 dark:text-gray-400">
-              {{ $t('projects.featuredSubtitle') }}
-            </p>
-          </div>
-          <NuxtLink to="/projects" class="hidden sm:flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium">
-            {{ $t('common.viewAll') }} 
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
+    <!-- Divider -->
+    <div class="h-px bg-apple-border dark:bg-apple-dark-border mx-6 md:mx-10" />
+
+    <!-- Projects Section -->
+    <section class="px-6 md:px-10 py-8">
+      <div class="max-w-5xl">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-apple-title1 text-apple-text dark:text-apple-dark-text">
+            {{ $t('projects.featuredTitle') }}
+          </h2>
+          <NuxtLink 
+            to="/projects" 
+            class="text-apple-callout text-apple-accent dark:text-apple-dark-accent hover:underline font-medium"
+          >
+            {{ $t('common.viewAll') }}
           </NuxtLink>
         </div>
-        
-        <div v-if="contentProjects && contentProjects.length > 0" class="grid md:grid-cols-2 gap-6">
+
+        <div v-if="contentProjects && contentProjects.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <NuxtLink 
             v-for="project in contentProjects" 
-            :key="project._path"
-            :to="project._path"
-            class="group block p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-700 transition-all"
+            :key="project.path"
+            :to="project.path"
+            class="group bg-apple-card dark:bg-apple-dark-card rounded-apple-lg p-5 shadow-apple-card hover:shadow-apple-card-hover transition-all duration-200"
           >
-            <div class="flex items-start justify-between mb-4">
-              <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 rounded-apple bg-gradient-to-br from-apple-accent/20 to-apple-purple/20 dark:from-apple-dark-accent/20 dark:to-apple-purple/20 flex items-center justify-center">
+                <svg class="w-4 h-4 text-apple-accent dark:text-apple-dark-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                 </svg>
               </div>
-              <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h3 class="text-apple-headline text-apple-text dark:text-apple-dark-text mb-1.5 group-hover:text-apple-accent dark:group-hover:text-apple-dark-accent transition-colors">
               {{ project.title }}
             </h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+            <p class="text-apple-footnote text-apple-text-secondary dark:text-apple-dark-text-secondary mb-3 line-clamp-2">
               {{ project.description }}
             </p>
-            <div v-if="project.tags" class="flex flex-wrap gap-2">
+            <div v-if="project.technologies" class="flex flex-wrap gap-1.5">
               <span 
-                v-for="tag in project.tags.slice(0, 4)" 
+                v-for="tag in (project.technologies || []).slice(0, 4)" 
                 :key="tag"
-                class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded"
+                class="px-2 py-0.5 text-apple-caption1 font-medium bg-black/[0.04] dark:bg-white/[0.06] text-apple-text-secondary dark:text-apple-dark-text-secondary rounded-md"
               >
                 {{ tag }}
               </span>
             </div>
           </NuxtLink>
         </div>
-        
-        <div v-else class="text-center py-12 text-gray-500 dark:text-gray-400">
-          {{ $t('projects.noProjects') }}
-        </div>
-
-        <div class="mt-8 text-center sm:hidden">
-          <NuxtLink to="/projects" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
-            {{ $t('common.viewAll') }} →
-          </NuxtLink>
+        <div v-else class="bg-apple-card dark:bg-apple-dark-card rounded-apple-lg p-10 text-center shadow-apple-card">
+          <p class="text-apple-body text-apple-text-secondary dark:text-apple-dark-text-secondary">
+            {{ $t('projects.noProjects') }}
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Recent Articles Section -->
-    <section class="py-16 bg-white dark:bg-gray-900">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center mb-12">
-          <div>
-            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              {{ $t('articles.recentTitle') }}
-            </h2>
-            <p class="text-gray-600 dark:text-gray-400">
-              {{ $t('articles.recentSubtitle') }}
-            </p>
-          </div>
-          <NuxtLink to="/articles" class="hidden sm:flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium">
+    <!-- Divider -->
+    <div class="h-px bg-apple-border dark:bg-apple-dark-border mx-6 md:mx-10" />
+
+    <!-- Articles Section -->
+    <section class="px-6 md:px-10 py-8">
+      <div class="max-w-5xl">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-apple-title1 text-apple-text dark:text-apple-dark-text">
+            {{ $t('articles.recentTitle') }}
+          </h2>
+          <NuxtLink 
+            to="/articles" 
+            class="text-apple-callout text-apple-accent dark:text-apple-dark-accent hover:underline font-medium"
+          >
             {{ $t('common.viewAll') }}
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
           </NuxtLink>
         </div>
-        
-        <div v-if="articles && articles.length > 0" class="grid md:grid-cols-2 gap-6">
+
+        <div v-if="articles && articles.length > 0" class="space-y-2">
           <NuxtLink 
             v-for="article in articles" 
-            :key="article._path"
-            :to="article._path"
-            class="group block p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            :key="article.path"
+            :to="article.path"
+            class="group flex items-center gap-4 bg-apple-card dark:bg-apple-dark-card rounded-apple-lg px-5 py-4 shadow-apple-card hover:shadow-apple-card-hover transition-all duration-200"
           >
-            <div class="text-sm text-blue-600 dark:text-blue-400 mb-2 font-medium">
-              {{ formatDate(article.date) }}
+            <div class="flex-1 min-w-0">
+              <h3 class="text-apple-headline text-apple-text dark:text-apple-dark-text mb-0.5 group-hover:text-apple-accent dark:group-hover:text-apple-dark-accent transition-colors truncate">
+                {{ article.title }}
+              </h3>
+              <p class="text-apple-footnote text-apple-text-secondary dark:text-apple-dark-text-secondary truncate">
+                {{ article.description }}
+              </p>
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {{ article.title }}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-              {{ article.description }}
-            </p>
-            <div v-if="article.tags" class="flex flex-wrap gap-2">
-              <span 
-                v-for="tag in article.tags.slice(0, 3)" 
-                :key="tag"
-                class="px-2 py-1 text-xs bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 rounded"
-              >
-                {{ tag }}
-              </span>
+            <div class="flex-shrink-0 flex items-center gap-3">
+              <time class="text-apple-caption1 text-apple-text-tertiary dark:text-apple-dark-text-tertiary whitespace-nowrap">
+                {{ formatDate(article.date) }}
+              </time>
+              <svg class="w-4 h-4 text-apple-text-tertiary dark:text-apple-dark-text-tertiary group-hover:text-apple-accent dark:group-hover:text-apple-dark-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
             </div>
           </NuxtLink>
         </div>
-        
-        <div v-else class="text-center py-12 text-gray-500 dark:text-gray-400">
-          {{ $t('articles.noArticles') }}
-        </div>
-
-        <div class="mt-8 text-center sm:hidden">
-          <NuxtLink to="/articles" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
-            {{ $t('common.viewAll') }} →
-          </NuxtLink>
+        <div v-else class="bg-apple-card dark:bg-apple-dark-card rounded-apple-lg p-10 text-center shadow-apple-card">
+          <p class="text-apple-body text-apple-text-secondary dark:text-apple-dark-text-secondary">
+            {{ $t('articles.noArticles') }}
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Contact CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-bold text-white mb-4">
-          {{ $t('contact.title') }}
-        </h2>
-        <p class="text-xl text-blue-100 mb-8">
-          {{ $t('contact.subtitle') }}
+    <!-- Contact CTA -->
+    <section class="px-6 md:px-10 py-10">
+      <div class="max-w-5xl">
+        <div class="bg-gradient-to-r from-apple-accent/5 to-apple-purple/5 dark:from-apple-dark-accent/10 dark:to-apple-purple/10 rounded-apple-xl p-8 md:p-10 text-center">
+          <h2 class="text-apple-title2 text-apple-text dark:text-apple-dark-text mb-2">
+            {{ $t('contact.title') }}
+          </h2>
+          <p class="text-apple-callout text-apple-text-secondary dark:text-apple-dark-text-secondary mb-6 max-w-lg mx-auto">
+            {{ $t('contact.subtitle') }}
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a 
+              :href="'mailto:' + basics.email"
+              class="inline-flex items-center gap-2 px-6 py-2.5 bg-apple-accent hover:bg-apple-accent-hover text-white rounded-full text-apple-subhead font-medium transition-colors duration-150 shadow-apple"
+            >
+              {{ $t('contact.email') }}
+            </a>
+            <a 
+              v-if="getProfile('linkedin')"
+              :href="getProfile('linkedin')?.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-2.5 bg-black/[0.05] dark:bg-white/[0.1] hover:bg-black/[0.08] dark:hover:bg-white/[0.14] text-apple-text dark:text-apple-dark-text rounded-full text-apple-subhead font-medium transition-colors duration-150"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="px-6 md:px-10 pb-8">
+      <div class="max-w-5xl">
+        <p class="text-apple-caption1 text-apple-text-tertiary dark:text-apple-dark-text-tertiary text-center">
+          © {{ new Date().getFullYear() }} {{ basics.name }} · {{ $t('footer.builtWith') }}
         </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a 
-            :href="'mailto:' + basics.email" 
-            class="px-6 py-3 bg-white text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-colors"
-          >
-            {{ $t('contact.email') }}
-          </a>
-          <a 
-            v-if="getProfile('linkedin')"
-            :href="getProfile('linkedin')?.url" 
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-6 py-3 bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-lg font-medium transition-colors"
-          >
-            LinkedIn
-          </a>
-        </div>
       </div>
-    </section>
+    </footer>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 const { t, locale } = useI18n()
 const { basics, skills, getProfile } = useResume()
+
+const initials = computed(() => {
+  const name = basics.value.name
+  const parts = name.split(' ')
+  return parts.length >= 2 ? (parts[0]?.[0] ?? '') + (parts[parts.length - 1]?.[0] ?? '') : name.substring(0, 2).toUpperCase()
+})
+
+const skillColors = [
+  'bg-apple-accent/10 dark:bg-apple-dark-accent/15',
+  'bg-apple-orange/10',
+  'bg-apple-green/10',
+]
+
+const skillIconColors = [
+  'text-apple-accent dark:text-apple-dark-accent',
+  'text-apple-orange',
+  'text-apple-green',
+]
+
+const skillPaths = [
+  'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
+  'M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z',
+  'M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342',
+]
 
 useSeoMeta({
   title: basics.value.name,
@@ -296,10 +271,7 @@ useSeoMeta({
 
 const { data: contentProjects } = await useAsyncData('home-projects', async () => {
   try {
-    return await queryContent('/projects')
-      .sort({ date: -1 })
-      .limit(4)
-      .find()
+    return await queryCollection('projects').order('date', 'DESC').limit(4).all()
   } catch (error) {
     console.error('Error fetching projects:', error)
     return []
@@ -308,10 +280,7 @@ const { data: contentProjects } = await useAsyncData('home-projects', async () =
 
 const { data: articles } = await useAsyncData('home-articles', async () => {
   try {
-    return await queryContent('/articles')
-      .sort({ date: -1 })
-      .limit(4)
-      .find()
+    return await queryCollection('articles').order('date', 'DESC').limit(4).all()
   } catch (error) {
     console.error('Error fetching articles:', error)
     return []
@@ -321,8 +290,7 @@ const { data: articles } = await useAsyncData('home-articles', async () => {
 const formatDate = (date: string) => {
   if (!date) return ''
   return new Date(date).toLocaleDateString(locale.value === 'fr' ? 'fr-FR' : 'en-US', {
-    year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric'
   })
 }

@@ -1,27 +1,27 @@
 <template>
-  <footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <footer class="border-t border-primary-border bg-white dark:bg-primary-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Brand -->
         <div>
-          <NuxtLink to="/" class="text-xl font-bold text-gray-900 dark:text-white">
+          <NuxtLink to="/" class="text-lg font-bold tracking-tight text-primary-dark dark:text-primary-light">
             {{ basics.name }}
           </NuxtLink>
-          <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+          <p class="mt-2 text-primary-dark dark:text-primary-light text-sm">
             {{ basics.headline }}
           </p>
         </div>
 
         <!-- Navigation -->
         <div>
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+          <h3 class="text-sm font-semibold text-primary-dark dark:text-primary-light uppercase tracking-wider mb-4 border-b border-primary-border pb-1">
             {{ $t('footer.navigation') }}
           </h3>
           <ul class="space-y-2">
             <li v-for="link in navigation" :key="link.path">
               <NuxtLink 
                 :to="link.path" 
-                class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
+                class="text-primary-dark dark:text-primary-light hover:text-primary-accent dark:hover:text-primary-accent transition-colors text-sm font-medium"
               >
                 {{ $t(link.name) }}
               </NuxtLink>
@@ -31,7 +31,7 @@
 
         <!-- Social -->
         <div>
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+          <h3 class="text-sm font-semibold text-primary-dark dark:text-primary-light uppercase tracking-wider mb-4 border-b border-primary-border pb-1">
             {{ $t('footer.connect') }}
           </h3>
           <div class="flex space-x-4">
@@ -40,7 +40,7 @@
               :href="getProfile('github')?.url" 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              class="text-primary-dark dark:text-primary-light hover:text-primary-accent dark:hover:text-primary-accent transition-colors"
               aria-label="GitHub"
             >
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -52,7 +52,7 @@
               :href="getProfile('linkedin')?.url" 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              class="text-primary-dark dark:text-primary-light hover:text-primary-accent dark:hover:text-primary-accent transition-colors"
               aria-label="LinkedIn"
             >
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@
             </a>
             <a 
               :href="'mailto:' + basics.email"
-              class="text-gray-600 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+              class="text-primary-dark dark:text-primary-light hover:text-primary-accent dark:hover:text-primary-accent transition-colors"
               aria-label="Email"
             >
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,12 +72,12 @@
         </div>
       </div>
 
-      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
+      <div class="mt-8 pt-8 border-t border-primary-border">
         <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p class="text-gray-500 dark:text-gray-400 text-sm">
+          <p class="text-primary-dark dark:text-primary-light text-sm">
             © {{ currentYear }} {{ basics.name }}. {{ $t('footer.rights') }}
           </p>
-          <p class="text-gray-400 dark:text-gray-500 text-sm">
+          <p class="text-primary-dark dark:text-primary-light text-sm">
             {{ $t('footer.builtWith') }}
           </p>
         </div>

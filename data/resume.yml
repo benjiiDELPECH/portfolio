@@ -7,7 +7,7 @@ content:
     name: "Benjamin Delpech"
     headline: "Consultant Full Stack"
     phone: ""
-    email: "contact@example.com"
+    email: "benjamin.delpech@proton.me"
     url: "https://benjamindelpech.dev"
     summary:
       - Consultant Full Stack avec 6+ ans d'expérience en développement d'applications web critiques
@@ -23,8 +23,8 @@ content:
         url: "https://github.com/benjiiDELPECH"
         username: "benjiiDELPECH"
       - network: LinkedIn
-        url: "https://linkedin.com/in/"
-        username: ""
+        url: "https://www.linkedin.com/in/benjamin-delpech/"
+        username: "benjamin-delpech"
 
   work:
     - name: "État de Vaud"

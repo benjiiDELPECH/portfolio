@@ -4,7 +4,8 @@
     "articles": "Articles",
     "projects": "Projects",
     "lab": "Lab",
-    "about": "About"
+    "about": "About",
+    "search": "Search"
   },
   "hero": {
     "greeting": "Hi, I'm",

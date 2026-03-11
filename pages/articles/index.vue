@@ -1,57 +1,81 @@
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="mb-12">
-      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Articles</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400">
-        Technical articles, tutorials, and insights from the world of software engineering.
-      </p>
+  <div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="px-6 md:px-10 pt-10 pb-6">
+      <div class="max-w-5xl">
+        <h1 class="text-apple-hero text-apple-text dark:text-apple-dark-text mb-1">
+          Articles
+        </h1>
+        <p class="text-apple-title3 text-apple-text-secondary dark:text-apple-dark-text-secondary">
+          Technical articles, tutorials, and insights from the world of software engineering.
+        </p>
+      </div>
     </div>
 
-    <div v-if="articles && articles.length > 0" class="space-y-6">
-      <article 
-        v-for="article in articles" 
-        :key="article.path"
-        class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow"
-      >
-        <NuxtLink :to="article.path" class="block">
-          <div class="flex justify-between items-start mb-3">
-            <div class="text-sm text-gray-500 dark:text-gray-400">
-              {{ formatDate(article.date) }}
+    <div class="h-px bg-apple-border dark:bg-apple-dark-border mx-6 md:mx-10" />
+
+    <div class="px-6 md:px-10 py-8">
+      <div class="max-w-5xl">
+        <div v-if="articles && articles.length > 0" class="space-y-3">
+          <NuxtLink 
+            v-for="article in articles" 
+            :key="article.path"
+            :to="article.path"
+            class="group flex items-center gap-5 bg-apple-card dark:bg-apple-dark-card rounded-apple-lg px-5 py-4 shadow-apple-card hover:shadow-apple-card-hover transition-all duration-200"
+          >
+            <!-- Article Icon -->
+            <div class="w-10 h-10 rounded-apple bg-gradient-to-br from-apple-accent/15 to-apple-teal/15 dark:from-apple-dark-accent/15 dark:to-apple-teal/15 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-apple-accent dark:text-apple-dark-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+              </svg>
             </div>
-            <div v-if="article.readingTime" class="text-sm text-gray-500 dark:text-gray-400">
-              {{ article.readingTime }} min read
+
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+              <h2 class="text-apple-headline text-apple-text dark:text-apple-dark-text mb-0.5 group-hover:text-apple-accent dark:group-hover:text-apple-dark-accent transition-colors">
+                {{ article.title }}
+              </h2>
+              <p class="text-apple-footnote text-apple-text-secondary dark:text-apple-dark-text-secondary truncate">
+                {{ article.description }}
+              </p>
+              <div v-if="article.tags" class="flex flex-wrap gap-1.5 mt-2">
+                <span 
+                  v-for="tag in article.tags.slice(0, 3)" 
+                  :key="tag"
+                  class="px-2 py-0.5 text-apple-caption2 font-medium bg-black/[0.04] dark:bg-white/[0.06] text-apple-text-tertiary dark:text-apple-dark-text-tertiary rounded-md"
+                >
+                  {{ tag }}
+                </span>
+              </div>
             </div>
+
+            <!-- Meta -->
+            <div class="flex-shrink-0 flex items-center gap-3">
+              <div class="text-right">
+                <time class="text-apple-caption1 text-apple-text-tertiary dark:text-apple-dark-text-tertiary block">
+                  {{ formatDate(article.date) }}
+                </time>
+                <span v-if="article.readingTime" class="text-apple-caption2 text-apple-text-tertiary dark:text-apple-dark-text-tertiary">
+                  {{ article.readingTime }} min
+                </span>
+              </div>
+              <svg class="w-4 h-4 text-apple-text-tertiary dark:text-apple-dark-text-tertiary group-hover:text-apple-accent dark:group-hover:text-apple-dark-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </NuxtLink>
+        </div>
+
+        <div v-else class="bg-apple-card dark:bg-apple-dark-card rounded-apple-xl p-16 text-center shadow-apple-card">
+          <div class="w-16 h-16 rounded-full bg-apple-accent/10 dark:bg-apple-dark-accent/15 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-apple-accent dark:text-apple-dark-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
           </div>
-          
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-            {{ article.title }}
-          </h2>
-          
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            {{ article.description }}
-          </p>
-          
-          <div v-if="article.tags" class="flex flex-wrap gap-2">
-            <span 
-              v-for="tag in article.tags" 
-              :key="tag"
-              class="px-3 py-1 text-sm bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full"
-            >
-              {{ tag }}
-            </span>
-          </div>
-        </NuxtLink>
-      </article>
-    </div>
-    
-    <div v-else class="text-center py-20">
-      <div class="text-gray-400 dark:text-gray-600 mb-4">
-        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
+          <h3 class="text-apple-title3 text-apple-text dark:text-apple-dark-text mb-2">No articles yet</h3>
+          <p class="text-apple-callout text-apple-text-secondary dark:text-apple-dark-text-secondary">Check back soon for new content!</p>
+        </div>
       </div>
-      <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">No articles yet</h3>
-      <p class="text-gray-500 dark:text-gray-400">Check back soon for new content!</p>
     </div>
   </div>
 </template>
@@ -60,15 +84,13 @@
 useSeoMeta({
   title: 'Articles',
   description: 'Technical articles, tutorials, and insights from the world of software engineering',
-  ogTitle: 'Articles - Engineering Knowledge Base',
+  ogTitle: 'Articles',
   ogDescription: 'Technical articles, tutorials, and insights from the world of software engineering'
 })
 
 const { data: articles } = await useAsyncData('articles', async () => {
   try {
-    const result = await queryCollection('articles')
-      .order('date', 'DESC')
-      .all()
+    const result = await queryCollection('articles').order('date', 'DESC').all()
     return result
   } catch (error) {
     console.error('Error fetching articles:', error)
@@ -79,7 +101,7 @@ const { data: articles } = await useAsyncData('articles', async () => {
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric'
   })
 }

@@ -1,12 +1,24 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-white dark:bg-gray-900">
-    <Header />
-    <main class="flex-1">
+  <div class="min-h-screen bg-apple-bg dark:bg-apple-dark-bg">
+    <!-- Desktop Sidebar -->
+    <Sidebar class="hidden md:flex" />
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
       <slot />
     </main>
-    <Footer />
+
+    <!-- Mobile Bottom Navigation -->
+    <MobileNav />
   </div>
 </template>
 
-<script setup>
-</script>
+<style scoped>
+.main-content {
+  @apply min-h-screen;
+  /* Offset for sidebar on desktop */
+  @apply md:ml-[240px];
+  /* Bottom padding for mobile nav */
+  @apply pb-[82px] md:pb-0;
+}
+</style>

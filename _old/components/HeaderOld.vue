@@ -1,31 +1,31 @@
 <template>
-  <header class="sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <header class="sticky top-0 z-50 border-b border-primary-border bg-white dark:bg-primary-dark">
+    <nav class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
-          <NuxtLink to="/" class="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+          <NuxtLink to="/" class="text-xl font-bold tracking-tight text-primary-dark dark:text-primary-light hover:text-primary-accent dark:hover:text-primary-accent transition-colors">
             {{ initials }}
           </NuxtLink>
         </div>
         
-        <div class="hidden md:flex items-center space-x-8">
+        <div class="hidden md:flex items-center space-x-6">
           <NuxtLink 
             v-for="item in navigation" 
             :key="item.path"
             :to="item.path" 
-            class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
-            active-class="text-blue-600 dark:text-blue-400"
+            class="text-primary-dark dark:text-primary-light hover:text-primary-accent dark:hover:text-primary-accent font-medium px-2 py-1 transition-colors"
+            active-class="text-primary-accent border-b-2 border-primary-accent"
           >
             {{ $t(item.name) }}
           </NuxtLink>
         </div>
 
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-3">
           <!-- Language Switcher -->
           <div ref="langMenuRef" class="relative">
             <button 
               @click="langMenuOpen = !langMenuOpen"
-              class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center gap-1"
+              class="p-2 border border-primary-border bg-transparent hover:bg-primary-light dark:hover:bg-primary-dark transition-colors flex items-center gap-1"
               aria-label="Change language"
             >
               <svg class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,13 +34,13 @@
               <span class="text-sm font-medium text-gray-700 dark:text-gray-300 uppercase">{{ locale }}</span>
             </button>
             
-            <div v-if="langMenuOpen" class="absolute right-0 mt-2 w-32 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 z-50">
+            <div v-if="langMenuOpen" class="absolute right-0 mt-2 w-32 bg-white dark:bg-primary-dark border border-primary-border py-1 z-50">
               <button
                 v-for="loc in availableLocales"
                 :key="loc.code"
                 @click="setLocale(loc.code)"
-                class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                :class="{ 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400': locale === loc.code }"
+                class="w-full text-left px-4 py-2 text-sm text-primary-dark dark:text-primary-light hover:bg-primary-light dark:hover:bg-primary-dark transition-colors border-b border-primary-border last:border-b-0"
+                :class="{ 'bg-primary-accent text-white': locale === loc.code }"
               >
                 {{ loc.name }}
               </button>
@@ -49,7 +49,7 @@
 
           <button 
             @click="toggleDarkMode"
-            class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            class="p-2 border border-primary-border bg-transparent hover:bg-primary-light dark:hover:bg-primary-dark transition-colors"
             aria-label="Toggle dark mode"
           >
             <svg v-if="isDark" class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,7 +62,7 @@
 
           <button 
             @click="mobileMenuOpen = !mobileMenuOpen"
-            class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            class="md:hidden p-2 border border-primary-border bg-transparent hover:bg-primary-light dark:hover:bg-primary-dark transition-colors"
             aria-label="Toggle menu"
           >
             <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,14 +73,14 @@
       </div>
 
       <!-- Mobile Menu -->
-      <div v-if="mobileMenuOpen" class="md:hidden py-4 border-t border-gray-200 dark:border-gray-800">
-        <div class="flex flex-col space-y-3">
+      <div v-if="mobileMenuOpen" class="md:hidden py-4 border-t border-primary-border">
+        <div class="flex flex-col space-y-2">
           <NuxtLink 
             v-for="item in navigation" 
             :key="item.path"
             :to="item.path" 
-            class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2"
-            active-class="text-blue-600 dark:text-blue-400"
+            class="text-primary-dark dark:text-primary-light hover:text-primary-accent dark:hover:text-primary-accent font-medium px-2 py-1 transition-colors"
+            active-class="text-primary-accent border-b-2 border-primary-accent"
             @click="mobileMenuOpen = false"
           >
             {{ $t(item.name) }}

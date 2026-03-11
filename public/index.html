@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Benjamin Delpech</title>
+  <meta name="description" content="Consultant Full Stack — Java, Spring Boot, Angular, Vue.js">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌘</text></svg>">
+  <style>
+    /* --- Reset & Base --- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-tertiary: #aeaeb2;
+      --bg: #fff;
+      --bg-secondary: #f5f5f7;
+      --border: #d2d2d7;
+      --accent: #0071e3;
+      --radius: 8px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #f5f5f7;
+        --text-secondary: #a1a1a6;
+        --text-tertiary: #636366;
+        --bg: #000;
+        --bg-secondary: #1c1c1e;
+        --border: #38383a;
+        --accent: #2997ff;
+      }
+    }
+
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.47;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* --- Typography --- */
+    h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.015em; line-height: 1.12; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; margin: 3rem 0 1rem; color: var(--text); }
+    h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+
+    p, li { color: var(--text-secondary); }
+
+    .headline {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .summary {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    /* --- Divider --- */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* --- Links row --- */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .links a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* --- Tags --- */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* --- Experience --- */
+    .entry {
+      margin-bottom: 1.75rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .entry-date {
+      font-size: 0.8125rem;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+    }
+
+    .entry-org {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .entry ul {
+      padding-left: 1.25rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .entry li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* --- Skills grid --- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-group h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-level {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      font-weight: 400;
+    }
+
+    /* --- Certifications --- */
+    .cert {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .cert-name { font-weight: 500; color: var(--text); }
+    .cert-meta { font-size: 0.8125rem; color: var(--text-tertiary); }
+
+    /* --- Articles --- */
+    .article-item {
+      display: block;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .article-item:hover { background: var(--bg-secondary); margin: 0 -0.75rem; padding: 0.75rem; border-radius: var(--radius); border-bottom-color: transparent; }
+
+    .article-title {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.125rem;
+    }
+
+    .article-desc {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .article-date {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin-top: 0.25rem;
+    }
+
+    /* --- Footer --- */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8125rem;
+      color: var(--text-tertiary);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 480px) {
+      body { padding: 2rem 1rem 4rem; }
+      h1 { font-size: 1.625rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Benjamin Delpech</h1>
+    <p class="headline">Consultant Full Stack</p>
+    <p class="summary">
+      6+ ans d'expérience en développement d'applications web critiques.
+      Architecture microservices, Spring Boot, Angular et Vue.js.
+      Systèmes à forte charge (100k+ utilisateurs) et intégrations complexes.
+    </p>
+    <div class="links">
+      <a href="mailto:benjamin.delpech@proton.me">Email</a>
+      <a href="https://github.com/benjiiDELPECH" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/benjamin-delpech/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <hr>
+
+  <!-- Experience -->
+  <section>
+    <h2>Expérience</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Consultant Full Stack</h3>
+        <span class="entry-date">Oct 2025 — Présent</span>
+      </div>
+      <p class="entry-org">État de Vaud</p>
+      <ul>
+        <li>Microservices critiques pour le Portail Parents (100k+ utilisateurs)</li>
+        <li>APIs REST, intégration ESB ActiveMQ, cycle de vie des événements métier</li>
+        <li>Migration Testcontainers, standardisation JUnit5</li>
+        <li>Provider email OTP Keycloak et nettoyage theme/realm</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Spring Boot</span>
+        <span class="tag">Microservices</span>
+        <span class="tag">Keycloak</span>
+        <span class="tag">ActiveMQ</span>
+        <span class="tag">Testcontainers</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Consultant Full Stack — Projet CV/AI Interne</h3>
+        <span class="entry-date">Jun — Sep 2025</span>
+      </div>
+      <p class="entry-org">SmartWave</p>
+      <ul>
+        <li>AI Gateway centralisée pour AWS Bedrock avec rate limiting Bucket4j</li>
+        <li>Parser CV Word/PDF avec normalisation et classification IA</li>
+        <li>Fédération OIDC Bitbucket ↔ AWS via STS assume-role</li>
+        <li>Architecture Angular 20 smart/dumb avec SignalStore</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">AWS Bedrock</span>
+        <span class="tag">Spring AI</span>
+        <span class="tag">Angular 20</span>
+        <span class="tag">SignalStore</span>
+        <span class="tag">OIDC</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Consultant Full Stack</h3>
+        <span class="entry-date">Jul — Dec 2024</span>
+      </div>
+      <p class="entry-org">État de Genève</p>
+      <ul>
+        <li>Microservices Spring Boot et intégration de vues Oracle</li>
+        <li>Architecture BFF OAuth2 avec Spring Cloud Gateway</li>
+        <li>Modernisation Vue 3 e-démarches et bibliothèque de composants</li>
+        <li>Librairies avec Storybook, Vitest, Rollup</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Spring Boot</span>
+        <span class="tag">Vue 3</span>
+        <span class="tag">OAuth2</span>
+        <span class="tag">Storybook</span>
+        <span class="tag">Oracle</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Consultant Full Stack</h3>
+        <span class="entry-date">Dec 2023 — Jul 2024</span>
+      </div>
+      <p class="entry-org">Hôpitaux Universitaires de Genève</p>
+      <ul>
+        <li>Vue de calcul de score de soins infirmiers basée sur les codes d'assurance</li>
+        <li>Interface de feedback d'alertes pour les médecins</li>
+        <li>Évolutions fullstack sur les règles de remboursement d'assurance</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Spring Boot</span>
+        <span class="tag">Healthcare</span>
+        <span class="tag">Insurance</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Développeur Full Stack</h3>
+        <span class="entry-date">May 2022 — Sep 2023</span>
+      </div>
+      <p class="entry-org">Université de Bordeaux</p>
+      <ul>
+        <li>Frontend Vue3 + Quasar pour plateforme d'évaluation étudiante</li>
+        <li>API Spring Boot pour calcul de moyennes pondérées</li>
+        <li>Intégration CI Docker, tests E2E Cypress et Karate</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Vue 3</span>
+        <span class="tag">Quasar</span>
+        <span class="tag">Spring Boot</span>
+        <span class="tag">Cypress</span>
+        <span class="tag">Docker</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Développeur Full Stack</h3>
+        <span class="entry-date">Jun 2019 — May 2022</span>
+      </div>
+      <p class="entry-org">Ennov</p>
+      <ul>
+        <li>Optimisation de performance pour AP-HP Paris (100k+ utilisateurs)</li>
+        <li>File d'attente de jobs basée sur la base de données</li>
+        <li>Refactoring massif JSP et optimisation SQL</li>
+        <li>Analyse de dumps de 100GB pour le support</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Java</span>
+        <span class="tag">Performance</span>
+        <span class="tag">SQL</span>
+        <span class="tag">JSP</span>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Skills -->
+  <section>
+    <h2>Compétences</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Backend <span class="skill-level">— Expert</span></h3>
+        <div class="tags">
+          <span class="tag">Java</span>
+          <span class="tag">Kotlin</span>
+          <span class="tag">Spring Boot 3</span>
+          <span class="tag">Spring AI</span>
+          <span class="tag">WebFlux</span>
+          <span class="tag">JPA</span>
+          <span class="tag">Keycloak</span>
+          <span class="tag">OAuth2</span>
+          <span class="tag">ActiveMQ</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Frontend <span class="skill-level">— Expert</span></h3>
+        <div class="tags">
+          <span class="tag">Angular</span>
+          <span class="tag">Vue 3</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">RxJS</span>
+          <span class="tag">Pinia</span>
+          <span class="tag">Tailwind CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Databases <span class="skill-level">— Avancé</span></h3>
+        <div class="tags">
+          <span class="tag">Oracle</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">Redis</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>DevOps & Tools <span class="skill-level">— Avancé</span></h3>
+        <div class="tags">
+          <span class="tag">Docker</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Git</span>
+          <span class="tag">GitLab CI</span>
+          <span class="tag">Testcontainers</span>
+          <span class="tag">Cypress</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Certifications -->
+  <section>
+    <h2>Certifications</h2>
+    <div class="cert">
+      <span class="cert-name">AWS AI Practitioner Foundational</span>
+      <span class="cert-meta">AWS · 2025</span>
+    </div>
+    <div class="cert">
+      <span class="cert-name">Senior Angular Developer</span>
+      <span class="cert-meta">certificates.dev · 2025</span>
+    </div>
+    <div class="cert">
+      <span class="cert-name">Senior Vue.js Developer</span>
+      <span class="cert-meta">certificates.dev · 2025</span>
+    </div>
+    <div class="cert">
+      <span class="cert-name">Spring Professional Certification</span>
+      <span class="cert-meta">VMware · 2025</span>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Education -->
+  <section>
+    <h2>Formation</h2>
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Master — Ingénierie Santé</h3>
+        <span class="entry-date">2018 — 2020</span>
+      </div>
+      <p class="entry-org">Université de Poitiers</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Articles -->
+  <section>
+    <h2>Articles</h2>
+    <a class="article-item" href="/articles/claude-enum-design-choice">
+      <div class="article-title">Claude 4.5 et les fondamentaux : quand l'IA ne challenge pas le design</div>
+      <div class="article-desc">J'ai demandé à Claude 4.5 de m'assister sur une app. Plusieurs jours après, je découvre un choix de conception bloquant. Retour d'expérience.</div>
+      <div class="article-date">18 février 2026 · 5 min</div>
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Genève, Suisse · benjamin.delpech@proton.me</p>
+  </footer>
+
+</body>
+</html>
