@@ -17,7 +17,6 @@
 <script setup>
 import IconHome from './icons/IconHome.vue'
 import IconArticles from './icons/IconArticles.vue'
-import IconProjects from './icons/IconProjects.vue'
 import IconLab from './icons/IconLab.vue'
 import IconAbout from './icons/IconAbout.vue'
 
@@ -26,7 +25,6 @@ const route = useRoute()
 const navigation = [
   { name: 'nav.home', path: '/', icon: IconHome },
   { name: 'nav.articles', path: '/articles', icon: IconArticles },
-  { name: 'nav.projects', path: '/projects', icon: IconProjects },
   { name: 'nav.lab', path: '/lab', icon: IconLab },
   { name: 'nav.about', path: '/about', icon: IconAbout },
 ]
@@ -53,6 +51,10 @@ const isActive = (path) => {
   @apply text-apple-text-secondary dark:text-apple-dark-text-secondary;
   @apply transition-colors duration-150;
   @apply min-w-[56px];
+}
+
+.mobile-nav-item span {
+  @apply text-[12px];
 }
 
 .mobile-nav-item-active {

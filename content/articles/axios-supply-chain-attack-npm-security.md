@@ -6,18 +6,18 @@ readingTime: 7
 tags: ["Security", "npm", "Supply Chain", "DevOps", "Node.js"]
 ---
 
-Le 31 mars 2026, un post sur X alerte la communauté : **axios@1.14.1 est compromis**. Un attaquant a pris le contrôle du compte npm d'un mainteneur et publié une version qui tire `plain-crypto-js@4.2.1` — un paquet malveillant créé le jour même.
+Le 31 mars 2026, un post sur X alerte la communauté : **axios@1.14.1 est compromis**. Un attaquant a pris le contrôle du compte npm du mainteneur principal et publié deux versions malveillantes (`1.14.1` et `0.30.4`) qui tirent `plain-crypto-js@4.2.1` — un paquet malveillant créé le jour même. Aucune des deux versions n'apparaît dans les tags GitHub officiels du projet.
 
-Axios, c'est **+45 millions de téléchargements par semaine**. L'un des paquets les plus utilisés de l'écosystème Node.js. Quand il tombe, c'est l'ensemble de la chaîne qui tremble.
+Axios, c'est **+100 millions de téléchargements par semaine**. L'un des paquets les plus utilisés de l'écosystème Node.js. Quand il tombe, c'est l'ensemble de la chaîne qui tremble.
 
 ## Ce qui s'est passé
 
 L'attaque suit un schéma classique de **dependency injection** :
 
-1. **Compromission du compte** d'un mainteneur Axios sur npm (credentials leak, token volé, ou social engineering)
-2. Publication de `axios@1.14.1` avec une nouvelle dépendance : `plain-crypto-js@4.2.1`
+1. **Compromission du compte** du mainteneur principal Axios sur npm — via un token npm longue durée compromis (le vecteur exact est encore sous investigation). Les autres mainteneurs n'ont pas pu révoquer l'accès car les permissions de l'attaquant dépassaient les leurs.
+2. Publication de `axios@1.14.1` **et** `axios@0.30.4` (les deux branches empoisonnées en 39 minutes) avec une nouvelle dépendance : `plain-crypto-js@4.2.1`
 3. `plain-crypto-js` est un paquet publié le jour même — nom volontairement proche de `crypto-js` (typosquatting) pour ne pas attirer l'attention
-4. Tout projet qui résout `axios` vers `1.14.1` (via `npm install` avec un range `^1.x`) **exécute le code malveillant**
+4. Tout projet qui résout `axios` vers `1.14.1` ou `0.30.4` (via `npm install` avec un range `^1.x` ou `^0.30.x`) **exécute le code malveillant**
 
 C'est la même mécanique que l'attaque `event-stream` de 2018, `ua-parser-js` de 2021, et `colors`/`faker` de 2022. Le vecteur change, le pattern reste.
 
@@ -32,6 +32,7 @@ Toute application qui a fait un **`npm install` frais** entre la publication de 
 "axios": ">=1.0.0"
 
 // ✅ Protégé — ne résout jamais vers 1.14.1
+"axios": "1.14.0"
 "axios": "1.13.6"
 "axios": "~1.13.6"
 ```
@@ -186,7 +187,7 @@ Si un paquet inconnu apparaît dans le diff et que tu ne l'as pas ajouté explic
 Pour référence, voici la checklist à dérouler quand un paquet est signalé compromis :
 
 ```
-□ grep le paquet malveillant dans tous les lockfiles
+□ grep `plain-crypto-js`, `axios@1.14.1` et `axios@0.30.4` dans tous les lockfiles
 □ Vérifier la version résolue de la dep directe
 □ Vérifier node_modules/ si installé localement
 □ Si impacté : fixer la version, supprimer node_modules, npm ci

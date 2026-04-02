@@ -12,18 +12,6 @@ export default defineContentConfig({
         readingTime: z.number().optional(),
         tags: z.array(z.string()).optional(),
       })
-    }),
-    projects: defineCollection({
-      type: 'page',
-      source: 'projects/**/*.md',
-      schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        date: z.string().optional(),
-        technologies: z.array(z.string()).optional(),
-        github: z.string().optional(),
-        demo: z.string().optional(),
-      })
     })
   }
 })

@@ -23,10 +23,10 @@
         <!-- Quick Actions -->
         <div class="flex gap-3">
           <NuxtLink 
-            to="/projects"
+            to="/articles"
             class="inline-flex items-center gap-2 px-5 py-2.5 bg-apple-accent hover:bg-apple-accent-hover text-white rounded-full text-apple-subhead font-medium transition-colors duration-150 shadow-apple"
           >
-            {{ $t('hero.viewProjects') }}
+            {{ $t('nav.articles') }}
           </NuxtLink>
           <NuxtLink 
             to="/about"
@@ -78,63 +78,6 @@
               </span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Divider -->
-    <div class="h-px bg-apple-border dark:bg-apple-dark-border mx-6 md:mx-10" />
-
-    <!-- Projects Section -->
-    <section class="px-6 md:px-10 py-8">
-      <div class="max-w-5xl">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="text-apple-title1 text-apple-text dark:text-apple-dark-text">
-            {{ $t('projects.featuredTitle') }}
-          </h2>
-          <NuxtLink 
-            to="/projects" 
-            class="text-apple-callout text-apple-accent dark:text-apple-dark-accent hover:underline font-medium"
-          >
-            {{ $t('common.viewAll') }}
-          </NuxtLink>
-        </div>
-
-        <div v-if="contentProjects && contentProjects.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <NuxtLink 
-            v-for="project in contentProjects" 
-            :key="project.path"
-            :to="project.path"
-            class="group bg-apple-card dark:bg-apple-dark-card rounded-apple-lg p-5 shadow-apple-card hover:shadow-apple-card-hover transition-all duration-200"
-          >
-            <div class="flex items-center gap-2 mb-3">
-              <div class="w-8 h-8 rounded-apple bg-gradient-to-br from-apple-accent/20 to-apple-purple/20 dark:from-apple-dark-accent/20 dark:to-apple-purple/20 flex items-center justify-center">
-                <svg class="w-4 h-4 text-apple-accent dark:text-apple-dark-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
-                </svg>
-              </div>
-            </div>
-            <h3 class="text-apple-headline text-apple-text dark:text-apple-dark-text mb-1.5 group-hover:text-apple-accent dark:group-hover:text-apple-dark-accent transition-colors">
-              {{ project.title }}
-            </h3>
-            <p class="text-apple-footnote text-apple-text-secondary dark:text-apple-dark-text-secondary mb-3 line-clamp-2">
-              {{ project.description }}
-            </p>
-            <div v-if="project.technologies" class="flex flex-wrap gap-1.5">
-              <span 
-                v-for="tag in (project.technologies || []).slice(0, 4)" 
-                :key="tag"
-                class="px-2 py-0.5 text-apple-caption1 font-medium bg-black/[0.04] dark:bg-white/[0.06] text-apple-text-secondary dark:text-apple-dark-text-secondary rounded-md"
-              >
-                {{ tag }}
-              </span>
-            </div>
-          </NuxtLink>
-        </div>
-        <div v-else class="bg-apple-card dark:bg-apple-dark-card rounded-apple-lg p-10 text-center shadow-apple-card">
-          <p class="text-apple-body text-apple-text-secondary dark:text-apple-dark-text-secondary">
-            {{ $t('projects.noProjects') }}
-          </p>
         </div>
       </div>
     </section>
@@ -267,15 +210,6 @@ useSeoMeta({
   ogTitle: basics.value.name,
   ogDescription: basics.value.summary?.[0] || t('hero.description'),
   ogType: 'website'
-})
-
-const { data: contentProjects } = await useAsyncData('home-projects', async () => {
-  try {
-    return await queryCollection('projects').order('date', 'DESC').limit(4).all()
-  } catch (error) {
-    console.error('Error fetching projects:', error)
-    return []
-  }
 })
 
 const { data: articles } = await useAsyncData('home-articles', async () => {

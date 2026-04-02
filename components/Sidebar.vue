@@ -140,7 +140,6 @@
 <script setup>
 import IconHome from './icons/IconHome.vue'
 import IconArticles from './icons/IconArticles.vue'
-import IconProjects from './icons/IconProjects.vue'
 import IconLab from './icons/IconLab.vue'
 import IconAbout from './icons/IconAbout.vue'
 
@@ -157,7 +156,6 @@ const initials = computed(() => {
 const navigation = [
   { name: 'nav.home', path: '/', icon: IconHome },
   { name: 'nav.articles', path: '/articles', icon: IconArticles },
-  { name: 'nav.projects', path: '/projects', icon: IconProjects },
   { name: 'nav.lab', path: '/lab', icon: IconLab },
   { name: 'nav.about', path: '/about', icon: IconAbout },
 ]
