@@ -10,6 +10,55 @@ Le 31 mars 2026, un post sur X alerte la communauté : **axios@1.14.1 est compro
 
 Axios, c'est **+100 millions de téléchargements par semaine**. L'un des paquets les plus utilisés de l'écosystème Node.js. Quand il tombe, c'est l'ensemble de la chaîne qui tremble.
 
+## Le principe, sans jargon
+
+Imagine Bob et Alice. Les deux utilisent un Samsung Galaxy S22.
+
+```
+Jour 1 — Tout va bien
+
+  Bob                          Alice
+  [Samsung S22]                [Samsung S22]
+  version: 14.0               version: 14.0
+  -> tout fonctionne           -> tout fonctionne
+```
+
+Samsung publie une mise à jour. Bob et Alice ont activé les mises à jour automatiques.
+
+```
+Jour 2 — Mise à jour classique
+
+  Samsung publie la version 14.1
+  (correctif de sécurité légitime)
+
+  Bob                          Alice
+  [Samsung S22]                [Samsung S22]
+  version: 14.0 -> 14.1       version: 14.0 -> 14.1
+  -> OK, tout va bien          -> OK, tout va bien
+```
+
+Maintenant, un attaquant compromet le compte d'un développeur chez Samsung. Il publie une fausse mise à jour.
+
+```
+Jour 3 — L'attaque
+
+  Attaquant publie la version 14.2
+  (contient du code qui envoie tes contacts
+   et tes photos à un serveur externe)
+
+  Bob                          Alice
+  [Samsung S22]                [Samsung S22]
+  config: "accepter ^14.x"     config: "rester sur 14.1"
+         |                            |
+         v                            v
+  version: 14.1 -> 14.2       version: 14.1 (pas de changement)
+  -> COMPROMIS                 -> PROTEGEE
+```
+
+La seule différence : Alice a fixé sa version. Bob accepte "toute version 14.x".
+
+Dans npm, c'est exactement la même chose. `"axios": "^1.13.6"` = "accepter toute version 1.x". `"axios": "1.13.6"` = "rester sur 1.13.6, point".
+
 ## Ce qui s'est passé
 
 L'attaque suit un schéma classique de **dependency injection** :
@@ -26,12 +75,12 @@ C'est la même mécanique que l'attaque `event-stream` de 2018, `ua-parser-js` d
 Toute application qui a fait un **`npm install` frais** entre la publication de la version compromise et son retrait, avec un range permissif dans `package.json` :
 
 ```json
-// ❌ Vulnérable — résout vers 1.14.1
+// VULNERABLE — résout vers 1.14.1
 "axios": "^1.7.9"
 "axios": "^1.0.0"
 "axios": ">=1.0.0"
 
-// ✅ Protégé — ne résout jamais vers 1.14.1
+// PROTEGE — ne résout jamais vers 1.14.1
 "axios": "1.14.0"
 "axios": "1.13.6"
 "axios": "~1.13.6"
@@ -45,9 +94,9 @@ La première réaction est souvent : "j'ai un lockfile, je suis protégé". C'es
 
 | Situation | Protégé ? |
 |---|---|
-| `npm ci` (CI/CD) | ✅ Toujours |
-| `npm install` sans modification | ✅ Oui |
-| Clone frais + `npm ci` | ✅ Si committé |
+| `npm ci` (CI/CD) | Oui — toujours |
+| `npm install` sans modification | Oui |
+| Clone frais + `npm ci` | Oui — si committé |
 
 ### Quand il ne te protège PAS
 
@@ -129,11 +178,11 @@ Exemple de sortie :
 
 | | `npm audit` détecte ? |
 |---|---|
-| CVE publiée sur une dépendance | ✅ Oui |
-| Paquet avec une vulnérabilité connue et patchée | ✅ Oui |
-| Attaque zero-day (paquet malveillant sans CVE encore) | ❌ **Non** |
-| Code malveillant dans un `postinstall` script | ❌ **Non** |
-| Typosquatting (paquet au nom similaire) | ❌ **Non** |
+| CVE publiée sur une dépendance | Oui |
+| Paquet avec une vulnérabilité connue et patchée | Oui |
+| Attaque zero-day (paquet malveillant sans CVE encore) | **Non** |
+| Code malveillant dans un `postinstall` script | **Non** |
+| Typosquatting (paquet au nom similaire) | **Non** |
 
 **Conclusion** : `npm audit` détecte les vulnérabilités *après* qu'elles ont été signalées. C'est une couche de défense utile mais **réactive** — elle n'aurait pas détecté l'attaque axios au moment de la publication. Pour la détection proactive, il faut des outils comme **Socket.dev** qui analysent le comportement du code (appels réseau, eval, accès filesystem).
 
@@ -143,10 +192,10 @@ Aucune de ces couches ne suffit seule. Chacune couvre l'angle mort des deux autr
 
 | Scénario d'attaque | Versions fixes | Lockfile + `npm ci` | `npm audit` |
 |---|---|---|---|
-| **Nouvelle version malveillante** (axios@1.14.1) | ✅ Bloque — tu restes sur 1.13.6 | ✅ Bloque — le lockfile fixe 1.13.6 | ❌ Pas de CVE encore |
-| **Dev fait `npm install dayjs`** et axios saute à 1.14.1 | ✅ Bloque — version fixée, npm ne peut pas bumper | ⚠️ Le lockfile est **mis à jour** silencieusement | ❌ Pas de CVE encore |
-| **CVE connue** sur une dep existante | ❌ Tu restes sur la version vulnérable | ❌ Idem | ✅ Détecte et alerte |
-| **Dev supprime le lockfile** et fait `npm install` | ✅ Bloque — version exacte, pas de range | ❌ Plus de lockfile | ❌ Pas de CVE encore |
+| **Nouvelle version malveillante** (axios@1.14.1) | Bloque — tu restes sur 1.13.6 | Bloque — le lockfile fixe 1.13.6 | Pas de CVE encore |
+| **Dev fait `npm install dayjs`** et axios saute à 1.14.1 | Bloque — version fixée, npm ne peut pas bumper | Le lockfile est **mis à jour** silencieusement | Pas de CVE encore |
+| **CVE connue** sur une dep existante | Tu restes sur la version vulnérable | Idem | Détecte et alerte |
+| **Dev supprime le lockfile** et fait `npm install` | Bloque — version exacte, pas de range | Plus de lockfile | Pas de CVE encore |
 
 La **ligne 2** est la plus importante : sans version fixée, un simple `npm install dayjs` peut re-résoudre tout l'arbre de dépendances. Le lockfile est mis à jour, committé, et `npm ci` en CI n'y verra rien — il installera fidèlement le *nouveau* lockfile compromis.
 
@@ -200,11 +249,11 @@ Pour référence, voici la checklist à dérouler quand un paquet est signalé c
 
 | Syntaxe | Range autorisé | `1.7.9` résout vers `1.14.1` ? |
 |---|---|---|
-| `1.7.9` | Exacte | ❌ |
-| `~1.7.9` | `≥1.7.9 <1.8.0` | ❌ |
-| `^1.7.9` | `≥1.7.9 <2.0.0` | ✅ |
-| `*` | Tout | ✅ |
-| `>=1.0.0` | Tout depuis 1.0.0 | ✅ |
+| `1.7.9` | Exacte | Non |
+| `~1.7.9` | `≥1.7.9 <1.8.0` | Non |
+| `^1.7.9` | `≥1.7.9 <2.0.0` | **Oui** |
+| `*` | Tout | **Oui** |
+| `>=1.0.0` | Tout depuis 1.0.0 | **Oui** |
 
 ---
 
