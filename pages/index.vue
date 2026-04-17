@@ -85,6 +85,61 @@
     <!-- Divider -->
     <div class="h-px bg-apple-border dark:bg-apple-dark-border mx-6 md:mx-10" />
 
+    <!-- Featured Project Section -->
+    <section class="px-6 md:px-10 py-8">
+      <div class="max-w-5xl">
+        <h2 class="text-apple-title1 text-apple-text dark:text-apple-dark-text mb-1">
+          {{ $t('project.title') }}
+        </h2>
+        <p class="text-apple-callout text-apple-text-secondary dark:text-apple-dark-text-secondary mb-6">
+          {{ $t('project.subtitle') }}
+        </p>
+
+        <div class="bg-apple-card dark:bg-apple-dark-card rounded-apple-xl p-6 md:p-8 shadow-apple-card hover:shadow-apple-card-hover transition-shadow duration-200">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-10 h-10 rounded-apple flex items-center justify-center bg-apple-orange/10 flex-shrink-0">
+              <svg class="w-5 h-5 text-apple-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3H21m-3.75 3H21" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-apple-title3 text-apple-text dark:text-apple-dark-text mb-1">
+                {{ $t('project.rea.name') }}
+              </h3>
+              <span class="inline-flex items-center px-2 py-0.5 text-apple-caption1 font-medium bg-apple-green/10 text-apple-green rounded-full">
+                {{ $t('project.rea.status') }}
+              </span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-4 mb-5">
+            <div>
+              <p class="text-apple-caption1 font-semibold text-apple-text-tertiary dark:text-apple-dark-text-tertiary uppercase tracking-wider mb-1">{{ $t('project.problem') }}</p>
+              <p class="text-apple-footnote text-apple-text-secondary dark:text-apple-dark-text-secondary">{{ $t('project.rea.problem') }}</p>
+            </div>
+            <div>
+              <p class="text-apple-caption1 font-semibold text-apple-text-tertiary dark:text-apple-dark-text-tertiary uppercase tracking-wider mb-1">{{ $t('project.solution') }}</p>
+              <p class="text-apple-footnote text-apple-text-secondary dark:text-apple-dark-text-secondary">{{ $t('project.rea.solution') }}</p>
+            </div>
+            <div>
+              <p class="text-apple-caption1 font-semibold text-apple-text-tertiary dark:text-apple-dark-text-tertiary uppercase tracking-wider mb-1">{{ $t('project.output') }}</p>
+              <p class="text-apple-footnote text-apple-text-secondary dark:text-apple-dark-text-secondary">{{ $t('project.rea.output') }}</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5">
+            <span v-for="tech in ['Spring Boot', 'Kafka', 'Vue.js', 'AI Agents', 'PostgreSQL', 'Kubernetes']" :key="tech"
+              class="px-2 py-0.5 text-apple-caption1 font-medium bg-black/[0.04] dark:bg-white/[0.06] text-apple-text-secondary dark:text-apple-dark-text-secondary rounded-md">
+              {{ tech }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="h-px bg-apple-border dark:bg-apple-dark-border mx-6 md:mx-10" />
+
     <!-- Articles Section -->
     <section class="px-6 md:px-10 py-8">
       <div class="max-w-5xl">

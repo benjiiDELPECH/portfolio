@@ -9,24 +9,24 @@
   },
   "hero": {
     "greeting": "Hi, I'm",
-    "description": "I design and build modern web applications, focusing on code quality, best practices, and user experience.",
-    "viewProjects": "View my projects",
+    "description": "From idea to deployable system: backend, data pipelines, frontend. I ship full products, not just code.",
+    "viewProjects": "See my work",
     "aboutMe": "Learn more"
   },
   "skills": {
-    "title": "Skills",
-    "subtitle": "The technologies and tools I use daily to create performant solutions.",
+    "title": "What I Build",
+    "subtitle": "Capabilities I bring to every project — from architecture to production.",
     "development": {
-      "title": "Development",
-      "description": "Building robust web applications and APIs with modern technologies."
+      "title": "Backend & APIs",
+      "description": "Build scalable backend systems with Spring Boot, reactive pipelines, and microservices."
     },
     "infrastructure": {
-      "title": "Infrastructure",
-      "description": "Deploying and managing applications in the cloud with DevOps best practices."
+      "title": "Data & Infrastructure",
+      "description": "Design real-time data flows, deploy on Kubernetes, and automate CI/CD pipelines."
     },
     "other": {
-      "title": "Other",
-      "description": "Complementary methodologies and tools for efficient development."
+      "title": "Frontend & Product",
+      "description": "Deliver production-ready frontends with Vue and Angular, from UI design to release."
     }
   },
   "projects": {
@@ -34,15 +34,29 @@
     "featuredSubtitle": "A selection of projects I've worked on.",
     "noProjects": "No projects yet. Check back soon!"
   },
+  "project": {
+    "title": "Featured Project",
+    "subtitle": "What I'm building right now.",
+    "problem": "Problem",
+    "solution": "Solution",
+    "output": "Output",
+    "rea": {
+      "name": "Real Estate Analytics Platform",
+      "status": "In Production",
+      "problem": "Investors lack clear, data-backed price justification for real estate decisions.",
+      "solution": "Multi-agent deterministic system with AI-powered property analysis.",
+      "output": "Full investment decision report in under 30 seconds."
+    }
+  },
   "articles": {
-    "recentTitle": "Recent Articles",
-    "recentSubtitle": "Thoughts, tutorials, and insights about development.",
+    "recentTitle": "From the Field",
+    "recentSubtitle": "Real-world engineering problems I encounter while building systems.",
     "noArticles": "No articles yet. Check back soon!"
   },
   "contact": {
-    "title": "Interested in working together?",
-    "subtitle": "I'm open to opportunities and new projects. Feel free to reach out.",
-    "email": "Contact me"
+    "title": "Building an MVP or data-driven product?",
+    "subtitle": "I help teams ship production-ready systems — backend, data, frontend. Let's talk.",
+    "email": "Get in touch"
   },
   "common": {
     "viewAll": "View all"

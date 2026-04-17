@@ -5,15 +5,15 @@
 content:
   basics:
     name: "Benjamin Delpech"
-    headline: "Consultant Full Stack"
+    headline: "I build production-ready systems for data-driven products"
     phone: ""
     email: "benjamin.delpech@proton.me"
     url: "https://benjamindelpech.dev"
     summary:
-      - Consultant Full Stack avec 6+ ans d'expérience en développement d'applications web critiques
-      - Expertise en architecture microservices, Spring Boot, Angular et Vue.js
-      - Spécialisé dans les systèmes à forte charge (100k+ utilisateurs) et les intégrations complexes
-      - Certifié AWS AI Practitioner, Spring Professional, Senior Angular et Vue.js Developer
+      - I design and ship full-stack systems — from backend APIs to data pipelines to production frontends
+      - 6+ years building critical applications for government, healthcare, and enterprise clients (100k+ users)
+      - Currently building an AI-powered real estate analytics platform as a solo founder
+      - Certified AWS AI Practitioner, Spring Professional, Senior Angular & Vue.js Developer
     location:
       city: "Genève"
       region: ""

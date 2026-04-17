@@ -74,16 +74,29 @@ tasks.register<JavaExec>("detekt") {
 
 Le JAR detekt tourne dans sa propre JVM. Zéro couplage avec la version Kotlin de Gradle. `./gradlew detekt` → BUILD SUCCESSFUL.
 
-Premier run sur 34K lignes : **1923 findings**. Les plus bruyants :
+Premier run sur 34K lignes : **1923 findings**. Le réflexe, c'est de paniquer. En réalité, il faut trier.
 
-| Règle | Count | Action |
-|-------|-------|--------|
-| MagicNumber | 1456 | Configurer les exceptions (codes HTTP, seuils métier) |
-| MaxLineLength | 114 | Ajuster le seuil à 140 |
-| TooGenericExceptionCaught | 96 | Traiter au cas par cas |
-| WildcardImport | 84 | Auto-fix possible |
-| CyclomaticComplexMethod | 46 | Les vrais candidats au refactoring |
-| LongMethod | 40 | Idem |
+**Le bruit (95% du volume) :**
+
+| Règle | Count | Verdict |
+|-------|-------|---------|
+| MagicNumber | 1456 | Faux positifs métier — prix, surfaces, seuils DPE, codes HTTP. Ajouter des `ignoreNumbers` dans `detekt.yml`. |
+| MaxLineLength | 114 | Bruit de config. Monter le seuil à 140 et oublier. |
+| WildcardImport | 84 | `--auto-correct` et c'est réglé en 2 secondes. |
+
+**Le signal (ce qui compte vraiment) :**
+
+| Règle | Count | Pourquoi c'est important |
+|-------|-------|--------------------------|
+| CyclomaticComplexMethod | 46 | Les méthodes où un bug se cache. Candidats au refactoring. |
+| LongMethod | 40 | Idem — forte corrélation avec les bugs en production. |
+| TooGenericExceptionCaught | 98 | 98 `catch (e: Exception)` et seulement 4 catches typés dans tout le service. Voir ci-dessous. |
+
+**Le cas `TooGenericExceptionCaught` mérite un paragraphe.** 98 `catch (e: Exception)` répartis dans tout le service, contre seulement 4 catches typés (`RestClientResponseException`, `CallNotPermittedException`…). C'est un pattern systématique, pas du cas par cas.
+
+Aux frontières HTTP (controllers), c'est défensif et souvent intentionnel — mais un `@ExceptionHandler` global ferait mieux le travail. Dans les appels aux APIs externes (geocoding, Firecrawl, LLM), c'est un vrai smell : tu veux attraper `RestClientException` ou `SocketTimeoutException`, pas un `OutOfMemoryError` qui passerait silencieusement dans le même `catch`.
+
+Ce n'est ni du bruit pur (contrairement à MagicNumber), ni du signal immédiat (contrairement à CyclomaticComplexMethod). C'est de la **dette technique mesurable** — 98 endroits où la gestion d'erreur est lazy, à traiter par lot quand la stabilité du pipeline le permettra.
 
 Le `detekt.yml` existait déjà dans le repo — il n'était juste branché nulle part. `maxIssues: -1` pour un mode "rapport only" sans casser le build (pour l'instant).
 

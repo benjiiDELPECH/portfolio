@@ -9,24 +9,24 @@
   },
   "hero": {
     "greeting": "Bonjour, je suis",
-    "description": "Je conçois et développe des applications web modernes, en mettant l'accent sur la qualité du code, les bonnes pratiques et l'expérience utilisateur.",
-    "viewProjects": "Voir mes projets",
+    "description": "De l'idée au système déployé : backend, pipelines de données, frontend. Je livre des produits complets, pas juste du code.",
+    "viewProjects": "Voir mes réalisations",
     "aboutMe": "En savoir plus"
   },
   "skills": {
-    "title": "Compétences",
-    "subtitle": "Les technologies et outils que j'utilise au quotidien pour créer des solutions performantes.",
+    "title": "Ce que je construis",
+    "subtitle": "Les capacités que j'apporte à chaque projet — de l'architecture à la production.",
     "development": {
-      "title": "Développement",
-      "description": "Création d'applications web et APIs robustes avec les technologies modernes."
+      "title": "Backend & APIs",
+      "description": "Concevoir des systèmes backend scalables avec Spring Boot, pipelines réactifs et microservices."
     },
     "infrastructure": {
-      "title": "Infrastructure",
-      "description": "Déploiement et gestion d'applications dans le cloud avec les meilleures pratiques DevOps."
+      "title": "Data & Infrastructure",
+      "description": "Architecturer des flux de données temps réel, déployer sur Kubernetes, automatiser le CI/CD."
     },
     "other": {
-      "title": "Autres",
-      "description": "Méthodologies et outils complémentaires pour un développement efficace."
+      "title": "Frontend & Produit",
+      "description": "Livrer des frontends production-ready avec Vue et Angular, du design UI au déploiement."
     }
   },
   "projects": {
@@ -34,14 +34,28 @@
     "featuredSubtitle": "Une sélection de projets sur lesquels j'ai travaillé.",
     "noProjects": "Aucun projet pour le moment. Revenez bientôt !"
   },
+  "project": {
+    "title": "Projet phare",
+    "subtitle": "Ce que je construis en ce moment.",
+    "problem": "Problème",
+    "solution": "Solution",
+    "output": "Résultat",
+    "rea": {
+      "name": "Plateforme d'Analytics Immobilier",
+      "status": "En production",
+      "problem": "Les investisseurs manquent de justification prix claire et data-driven.",
+      "solution": "Système multi-agents déterministe avec analyse IA des biens.",
+      "output": "Rapport de décision d'investissement complet en moins de 30 secondes."
+    }
+  },
   "articles": {
-    "recentTitle": "Articles récents",
-    "recentSubtitle": "Réflexions, tutoriels et retours d'expérience sur le développement.",
+    "recentTitle": "Retours du terrain",
+    "recentSubtitle": "Problèmes d'ingénierie réels rencontrés en construisant des systèmes.",
     "noArticles": "Aucun article pour le moment. Revenez bientôt !"
   },
   "contact": {
-    "title": "Intéressé par une collaboration ?",
-    "subtitle": "Je suis ouvert aux opportunités et aux nouveaux projets. N'hésitez pas à me contacter.",
+    "title": "Vous construisez un MVP ou un produit data-driven ?",
+    "subtitle": "J'aide les équipes à livrer des systèmes production-ready — backend, data, frontend. Parlons-en.",
     "email": "Me contacter"
   },
   "common": {
