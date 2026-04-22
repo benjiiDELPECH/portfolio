@@ -9,13 +9,21 @@
   },
   "hero": {
     "greeting": "Hi, I'm",
-    "description": "From idea to deployable system: backend, data pipelines, frontend. I ship full products, not just code.",
+    "kicker": "Full-stack developer · Geneva",
+    "description": "I build useful products, especially when backend, data, UI and production need to come together without a huge team around them.",
+    "note": "I care more about readable systems, restrained interfaces and honest write-ups than polished landing-page promises.",
     "viewProjects": "See my work",
-    "aboutMe": "Learn more"
+    "primaryAction": "Read my notes",
+    "aboutMe": "Learn more",
+    "signals": {
+      "location": "Based in Geneva",
+      "work": "Consulting + side products",
+      "focus": "Spring, Vue, infra and useful AI"
+    }
   },
   "skills": {
     "title": "What I Build",
-    "subtitle": "Capabilities I bring to every project — from architecture to production.",
+    "subtitle": "The parts I actually touch when I ship a product end to end.",
     "development": {
       "title": "Backend & APIs",
       "description": "Build scalable backend systems with Spring Boot, reactive pipelines, and microservices."
@@ -35,17 +43,18 @@
     "noProjects": "No projects yet. Check back soon!"
   },
   "project": {
-    "title": "Featured Project",
-    "subtitle": "What I'm building right now.",
+    "title": "Current Project",
+    "subtitle": "The thing taking most of my time right now.",
     "problem": "Problem",
     "solution": "Solution",
     "output": "Output",
     "rea": {
       "name": "Real Estate Analytics Platform",
       "status": "In Production",
-      "problem": "Investors lack clear, data-backed price justification for real estate decisions.",
-      "solution": "Multi-agent deterministic system with AI-powered property analysis.",
-      "output": "Full investment decision report in under 30 seconds."
+      "problem": "Buying a property from an average price per square meter is still too shaky for a real decision.",
+      "solution": "I combine market data, deterministic rules and an AI layer to produce analysis that stays fast to read but easy to justify.",
+      "output": "A decision-support report you can use in seconds, with the assumptions still visible.",
+      "context": "It is the kind of product I like building: full stack, concrete trade-offs, short iterations, and no fake polish hiding the hard parts."
     }
   },
   "articles": {
@@ -54,19 +63,33 @@
     "noArticles": "No articles yet. Check back soon!"
   },
   "contact": {
-    "title": "Building an MVP or data-driven product?",
-    "subtitle": "I help teams ship production-ready systems — backend, data, frontend. Let's talk.",
-    "email": "Get in touch"
+    "title": "Need a product + engineering perspective?",
+    "subtitle": "I can help on a Spring backend, a Vue/Angular frontend, architecture questions, or simply challenge an idea before too much code gets written.",
+    "email": "Email me"
   },
   "common": {
     "viewAll": "View all"
   },
+  "layout": {
+    "eyebrow": "Personal portfolio · notes, projects, architecture",
+    "contact": "direct contact",
+    "sidebarTitle": "Right now",
+    "sidebarNote": "I mostly share field notes, in-progress products and explicit technical choices here — not a polished showcase pretending everything is finished.",
+    "sidebarAction": "Send a message",
+    "navigationTitle": "Navigation",
+    "footerNote": "The site stays intentionally simple: readable, fast, and updated alongside real work."
+  },
   "about": {
     "title": "About",
-    "subtitle": "Developer passionate about creating elegant technical solutions.",
+    "subtitle": "I prefer clear systems, explicit trade-offs and projects that are genuinely useful to someone.",
     "intro": {
       "title": "Who am I?",
-      "content": "Passionate developer with expertise in full-stack web development. I enjoy building performant and maintainable applications, following industry best practices."
+      "content": "Passionate developer with expertise in full-stack web development. I enjoy building performant and maintainable applications, following industry best practices.",
+      "paragraphs": [
+        "I mostly work on products where business logic, code and production constraints all need to fit together without turning into a mess.",
+        "Over the last few years I have worked across Spring, Vue, Angular, Kafka, OAuth2, Keycloak, Kubernetes and plenty of less glamorous but very real integrations.",
+        "I like writing about incidents, architecture decisions and design-system drift because that is usually where the useful lessons are."
+      ]
     },
     "experience": {
       "title": "Work Experience"
@@ -89,7 +112,7 @@
     "navigation": "Navigation",
     "connect": "Connect",
     "rights": "All rights reserved.",
-    "builtWith": "Built with Nuxt 3 and Tailwind CSS"
+    "builtWith": "Built by hand with Nuxt and Tailwind"
   },
   "site": {
     "title": "Portfolio",

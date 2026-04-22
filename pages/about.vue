@@ -25,7 +25,7 @@
                 {{ $t('about.intro.title') }}
               </h2>
               <div class="space-y-3">
-                <p v-for="(item, index) in basics.summary" :key="index" class="text-apple-body text-apple-text-secondary dark:text-apple-dark-text-secondary leading-relaxed">
+                <p v-for="(item, index) in introParagraphs" :key="index" class="text-apple-body text-apple-text-secondary dark:text-apple-dark-text-secondary leading-relaxed">
                   {{ item }}
                 </p>
               </div>
@@ -225,8 +225,15 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-const { t, locale } = useI18n()
+const { t, tm, locale } = useI18n()
 const { basics, work, education, skills, languages, certificates, getProfile, formatDateRange } = useResume()
+
+const introParagraphs = computed(() => {
+  const translatedParagraphs = tm('about.intro.paragraphs')
+  return Array.isArray(translatedParagraphs) && translatedParagraphs.length > 0
+    ? translatedParagraphs
+    : (basics.value.summary ?? [])
+})
 
 const initials = computed(() => {
   const name = basics.value.name

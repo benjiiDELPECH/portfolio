@@ -9,13 +9,21 @@
   },
   "hero": {
     "greeting": "Bonjour, je suis",
-    "description": "De l'idée au système déployé : backend, pipelines de données, frontend. Je livre des produits complets, pas juste du code.",
+    "kicker": "Développeur full-stack · Genève",
+    "description": "Je construis des produits utiles, surtout quand il faut relier backend, data, UI et mise en prod sans équipe de vingt personnes autour.",
+    "note": "J'aime les systèmes lisibles, les interfaces sobres et les retours d'expérience concrets plus que les promesses de landing page.",
     "viewProjects": "Voir mes réalisations",
-    "aboutMe": "En savoir plus"
+    "primaryAction": "Lire mes notes",
+    "aboutMe": "En savoir plus",
+    "signals": {
+      "location": "Basé à Genève",
+      "work": "Consulting + produits perso",
+      "focus": "Spring, Vue, infra et IA utile"
+    }
   },
   "skills": {
     "title": "Ce que je construis",
-    "subtitle": "Les capacités que j'apporte à chaque projet — de l'architecture à la production.",
+    "subtitle": "Les briques que je touche vraiment quand je livre un produit de bout en bout.",
     "development": {
       "title": "Backend & APIs",
       "description": "Concevoir des systèmes backend scalables avec Spring Boot, pipelines réactifs et microservices."
@@ -35,17 +43,18 @@
     "noProjects": "Aucun projet pour le moment. Revenez bientôt !"
   },
   "project": {
-    "title": "Projet phare",
-    "subtitle": "Ce que je construis en ce moment.",
+    "title": "Projet en cours",
+    "subtitle": "Le sujet sur lequel je passe le plus de temps en ce moment.",
     "problem": "Problème",
     "solution": "Solution",
     "output": "Résultat",
     "rea": {
       "name": "Plateforme d'Analytics Immobilier",
       "status": "En production",
-      "problem": "Les investisseurs manquent de justification prix claire et data-driven.",
-      "solution": "Système multi-agents déterministe avec analyse IA des biens.",
-      "output": "Rapport de décision d'investissement complet en moins de 30 secondes."
+      "problem": "Acheter un bien avec un simple prix au m² moyen reste trop fragile pour prendre une vraie décision.",
+      "solution": "J'assemble des données de marché, des règles déterministes et une couche IA pour produire une analyse qui se lit vite mais se justifie.",
+      "output": "Un rapport d'aide à la décision exploitable en quelques secondes, avec les hypothèses visibles.",
+      "context": "C'est un produit que je construis comme j'aime travailler : une stack complète, des arbitrages concrets, et des itérations courtes plutôt qu'une démo parfaite."
     }
   },
   "articles": {
@@ -54,19 +63,33 @@
     "noArticles": "Aucun article pour le moment. Revenez bientôt !"
   },
   "contact": {
-    "title": "Vous construisez un MVP ou un produit data-driven ?",
-    "subtitle": "J'aide les équipes à livrer des systèmes production-ready — backend, data, frontend. Parlons-en.",
-    "email": "Me contacter"
+    "title": "Besoin d'un regard produit + technique ?",
+    "subtitle": "Je peux aider sur un backend Spring, une interface Vue/Angular, un sujet d'architecture ou simplement challenger une idée avant de coder trop vite.",
+    "email": "M'écrire"
   },
   "common": {
     "viewAll": "Voir tout"
   },
+  "layout": {
+    "eyebrow": "Portfolio personnel · notes, projets, architecture",
+    "contact": "contact direct",
+    "sidebarTitle": "En ce moment",
+    "sidebarNote": "Je partage surtout des retours d'expérience, des produits en cours et des choix techniques assumés — pas une vitrine parfaite.",
+    "sidebarAction": "Écrire un message",
+    "navigationTitle": "Navigation",
+    "footerNote": "Le site reste volontairement simple : lisible, rapide, et mis à jour au fil du travail réel."
+  },
   "about": {
     "title": "À propos",
-    "subtitle": "Développeur passionné par la création de solutions techniques élégantes.",
+    "subtitle": "Je préfère les systèmes clairs, les choix assumés et les projets qui servent vraiment à quelqu'un.",
     "intro": {
       "title": "Qui suis-je ?",
-      "content": "Développeur passionné avec une expertise en développement web full-stack. J'aime créer des applications performantes et maintenables, en suivant les meilleures pratiques de l'industrie."
+      "content": "Développeur passionné avec une expertise en développement web full-stack. J'aime créer des applications performantes et maintenables, en suivant les meilleures pratiques de l'industrie.",
+      "paragraphs": [
+        "Je travaille surtout sur des produits où il faut relier métier, code et contraintes de prod sans perdre la simplicité au passage.",
+        "Ces dernières années, j'ai touché à des stacks Spring, Vue, Angular, Kafka, OAuth2, Keycloak, Kubernetes et à pas mal d'intégrations moins glamour mais très réelles.",
+        "J'aime écrire sur les incidents, les choix d'architecture et les dérives de design system, parce que c'est souvent là qu'on apprend quelque chose d'utile."
+      ]
     },
     "experience": {
       "title": "Expérience professionnelle"
@@ -89,7 +112,7 @@
     "navigation": "Navigation",
     "connect": "Me suivre",
     "rights": "Tous droits réservés.",
-    "builtWith": "Construit avec Nuxt 3 et Tailwind CSS"
+    "builtWith": "Fait maison avec Nuxt et Tailwind"
   },
   "site": {
     "title": "Portfolio",

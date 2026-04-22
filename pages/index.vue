@@ -8,6 +8,9 @@
             {{ initials }}
           </div>
           <div>
+            <p class="text-apple-footnote uppercase tracking-[0.18em] text-apple-text-tertiary dark:text-apple-dark-text-tertiary mb-2">
+              {{ $t('hero.kicker') }}
+            </p>
             <h1 class="text-apple-hero text-apple-text dark:text-apple-dark-text mb-1">
               {{ basics.name }}
             </h1>
@@ -15,9 +18,22 @@
               {{ basics.headline }}
             </p>
             <p class="text-apple-body text-apple-text-secondary dark:text-apple-dark-text-secondary max-w-2xl">
-              {{ basics.summary?.[0] || $t('hero.description') }}
+              {{ $t('hero.description') }}
+            </p>
+            <p class="text-apple-footnote text-apple-text-tertiary dark:text-apple-dark-text-tertiary max-w-2xl mt-3">
+              {{ $t('hero.note') }}
             </p>
           </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span
+            v-for="signal in heroSignals"
+            :key="signal"
+            class="inline-flex items-center px-3 py-1 rounded-full text-apple-caption1 font-medium bg-black/[0.04] dark:bg-white/[0.06] text-apple-text-secondary dark:text-apple-dark-text-secondary"
+          >
+            {{ signal }}
+          </span>
         </div>
 
         <!-- Quick Actions -->
@@ -26,7 +42,7 @@
             to="/articles"
             class="inline-flex items-center gap-2 px-5 py-2.5 bg-apple-accent hover:bg-apple-accent-hover text-white rounded-full text-apple-subhead font-medium transition-colors duration-150 shadow-apple"
           >
-            {{ $t('nav.articles') }}
+            {{ $t('hero.primaryAction') }}
           </NuxtLink>
           <NuxtLink 
             to="/about"
@@ -126,6 +142,10 @@
               <p class="text-apple-footnote text-apple-text-secondary dark:text-apple-dark-text-secondary">{{ $t('project.rea.output') }}</p>
             </div>
           </div>
+
+          <p class="text-apple-footnote text-apple-text-tertiary dark:text-apple-dark-text-tertiary mb-4 max-w-3xl">
+            {{ $t('project.rea.context') }}
+          </p>
 
           <div class="flex flex-wrap gap-1.5">
             <span v-for="tech in ['Spring Boot', 'Kafka', 'Vue.js', 'AI Agents', 'PostgreSQL', 'Kubernetes']" :key="tech"
@@ -235,6 +255,12 @@ import { computed } from 'vue'
 const { t, locale } = useI18n()
 const { basics, skills, getProfile } = useResume()
 
+const heroSignals = computed(() => [
+  t('hero.signals.location'),
+  t('hero.signals.work'),
+  t('hero.signals.focus'),
+])
+
 const initials = computed(() => {
   const name = basics.value.name
   const parts = name.split(' ')
@@ -261,9 +287,9 @@ const skillPaths = [
 
 useSeoMeta({
   title: basics.value.name,
-  description: basics.value.summary?.[0] || t('hero.description'),
+  description: t('hero.description'),
   ogTitle: basics.value.name,
-  ogDescription: basics.value.summary?.[0] || t('hero.description'),
+  ogDescription: t('hero.description'),
   ogType: 'website'
 })
 

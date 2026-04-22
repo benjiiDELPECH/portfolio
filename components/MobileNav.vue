@@ -40,10 +40,14 @@ const isActive = (path) => {
   @apply fixed bottom-0 left-0 right-0 z-50;
   @apply flex items-center justify-around;
   @apply h-[82px] pb-5 pt-2;
-  @apply bg-[rgba(246,246,246,0.92)] dark:bg-[rgba(30,30,30,0.92)];
   @apply border-t border-apple-border dark:border-apple-dark-border;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background-color: rgba(235, 231, 222, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+:global(.dark) .mobile-nav {
+  background-color: rgba(17, 17, 17, 0.96);
 }
 
 .mobile-nav-item {
@@ -58,6 +62,6 @@ const isActive = (path) => {
 }
 
 .mobile-nav-item-active {
-  @apply text-apple-accent dark:text-apple-dark-accent;
+  @apply text-apple-text dark:text-apple-dark-text;
 }
 </style>

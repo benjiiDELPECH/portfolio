@@ -3,7 +3,7 @@
     <!-- Profile -->
     <div class="px-4 pt-6 pb-4">
       <NuxtLink to="/" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-apple-accent to-apple-purple flex items-center justify-center text-white text-sm font-bold shadow-apple">
+        <div class="w-9 h-9 rounded-xl bg-apple-text dark:bg-white flex items-center justify-center text-[#f3f1ec] dark:text-[#161616] text-sm font-bold">
           {{ initials }}
         </div>
         <div class="min-w-0">
@@ -13,18 +13,19 @@
       </NuxtLink>
     </div>
 
-    <!-- Search -->
-    <div class="px-3 pb-3">
-      <div class="relative">
-        <svg class="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-apple-text-tertiary dark:text-apple-dark-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <input 
-          type="text" 
-          :placeholder="$t('nav.search') || 'Search'" 
-          class="w-full h-7 pl-8 pr-3 text-apple-caption1 bg-black/[0.04] dark:bg-white/[0.06] rounded-md border-0 text-apple-text dark:text-apple-dark-text placeholder-apple-text-tertiary dark:placeholder-apple-dark-text-tertiary focus:outline-none focus:ring-1 focus:ring-apple-accent/40"
-          readonly
-        />
+    <!-- Intro Card -->
+    <div class="px-3 pb-4">
+      <div class="rounded-2xl border border-black/6 dark:border-white/8 bg-black/[0.025] dark:bg-white/[0.03] px-3.5 py-3.5">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-apple-text-tertiary dark:text-apple-dark-text-tertiary mb-2">
+          {{ $t('layout.sidebarTitle') }}
+        </p>
+        <p class="text-apple-footnote text-apple-text-secondary dark:text-apple-dark-text-secondary leading-relaxed mb-3">
+          {{ $t('layout.sidebarNote') }}
+        </p>
+        <a :href="'mailto:' + basics.email" class="inline-flex items-center gap-2 text-apple-footnote font-medium text-apple-text dark:text-apple-dark-text hover:text-apple-accent dark:hover:text-apple-dark-accent transition-colors">
+          <span>{{ $t('layout.sidebarAction') }}</span>
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
 
@@ -33,6 +34,11 @@
 
     <!-- Navigation -->
     <nav class="px-2 py-2 flex-1">
+      <div class="mt-1 mb-2 px-2">
+        <p class="text-apple-caption2 font-semibold text-apple-text-tertiary dark:text-apple-dark-text-tertiary uppercase tracking-wider">
+          {{ $t('layout.navigationTitle') }}
+        </p>
+      </div>
       <ul class="space-y-0.5">
         <li v-for="item in navigation" :key="item.path">
           <NuxtLink 
@@ -95,6 +101,9 @@
 
     <!-- Bottom Controls -->
     <div class="px-3 py-3 border-t border-apple-border dark:border-apple-dark-border">
+      <p class="text-[11px] leading-relaxed text-apple-text-tertiary dark:text-apple-dark-text-tertiary mb-3 px-0.5">
+        {{ $t('layout.footerNote') }}
+      </p>
       <div class="flex items-center justify-between">
         <!-- Language -->
         <div ref="langMenuRef" class="relative">
@@ -197,11 +206,13 @@ const toggleDarkMode = () => {
 <style scoped>
 .sidebar {
   @apply fixed top-0 left-0 bottom-0 w-[240px] flex flex-col;
-  @apply bg-[rgba(246,246,246,0.92)] dark:bg-[rgba(30,30,30,0.92)];
   @apply border-r border-apple-border dark:border-apple-dark-border;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background-color: #ebe7de;
   z-index: 40;
+}
+
+:global(.dark) .sidebar {
+  background-color: #111111;
 }
 
 .sidebar-item {
@@ -213,13 +224,13 @@ const toggleDarkMode = () => {
 }
 
 .sidebar-item-active {
-  @apply bg-apple-accent/10 dark:bg-apple-dark-accent/15;
-  @apply text-apple-accent dark:text-apple-dark-accent;
+  @apply bg-black/[0.06] dark:bg-white/[0.08];
+  @apply text-apple-text dark:text-apple-dark-text;
   @apply font-medium;
 }
 
 .sidebar-item-active .sidebar-icon {
-  @apply text-apple-accent dark:text-apple-dark-accent;
+  @apply text-apple-text dark:text-apple-dark-text;
 }
 
 .sidebar-icon {
